@@ -1,0 +1,33 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#rectangle{
+	width: 400px;
+	height: 200px;
+	position: absolute;
+	left:50%;
+	margin-left: -200px;
+	top:50%;
+	margin-top: -100px;
+	background-color: #ccc;
+}
+
+#circle_left{
+	width: 50px;
+	height: 50px;
+	background-color: yellow;
+	border-bottom-right-radius:50px;
+	position: absolute;
+	left:0;
+	top:0;	
+}
+#circle_right{
+	width: 50px;
+	height: 50px;
+	background-color: yellow;
+	border-top-left-radius:50px;
+	position: absolute;
+	right:0;
+	bottom:0;
+}

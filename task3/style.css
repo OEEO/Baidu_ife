@@ -1,0 +1,48 @@
+*{
+	margin:0;
+	padding:0;
+}
+#main{
+	background-color: #eee;
+	padding:20px;
+	min-width: 600px;
+	margin:20px;	
+	border:1px solid #999;	
+}
+#main article{
+	border:1px solid #999;
+	background-color: #fff;
+	box-sizing:border-box;
+	padding:20px;		
+}
+
+#resume{
+	margin-left:224px;	
+	margin-right:144px;	
+}
+#team{
+	width:204px;
+	float:left;			
+}
+#team span{
+	vertical-align: top;
+	margin-left: 15px;
+}
+#team img{
+	border:1px solid #999;
+}
+#person{
+	width:124px;
+	float:right;	
+}
+#person img{
+	border:1px solid #999;
+	border-radius: 5px;
+	margin-top:20px;
+}
+#person img:first-child{
+	margin-top:0px;
+}
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+.clearfloat{zoom:1}
+
