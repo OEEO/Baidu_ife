@@ -46,6 +46,26 @@ var aqiData = [
        aqiList.innerHTML = str;
 })();
 
+// (function () {
+//   /*
+//   在注释下方编写代码
+//   遍历读取aqiData中各个城市的数据
+//   将空气质量指数大于60的城市显示到aqi-list的列表中
+//   */
+  
+//   var chineseNumbers = ["一","二","三","四","五","六","七","八","九","十"];
+  
+//   var contentStr = "";
+//   aqiData.filter(function(element){return element[1] > 60;})
+//          .sort(function (d1,d2){ return d2[1] - d1[1]; })
+//          .forEach(function (element,index){
+//     contentStr += "<li>第" + chineseNumbers[index] + "名：" + element[0] + "，" + element[1] + "</li>";    
+//   });
+  
+//   document.getElementById("aqi-list").innerHTML = contentStr;
+  
+// })();
+
 </script>
 </body>
 </html>
