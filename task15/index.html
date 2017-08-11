@@ -38,13 +38,22 @@ function getData() {
   /*
   coding here
   */
+  // var source = document.getElementById('source');
+  // var lists = source.getElementsByTagName('li');
+  // var data = [];
+  // for (var i = 0; i < lists.length; i++) {
+  // 	data[i] = [];
+  // 	data[i][0] = lists[i].childNodes[0].nodeValue.slice(0,-5);
+  // 	data[i][1] = Number(lists[i].children[0].childNodes[0].nodeValue);
+  // }
+
   var source = document.getElementById('source');
-  var lists = source.getElementsByTagName('li');
   var data = [];
-  for (var i = 0; i < lists.length; i++) {
-  	data[i] = [];
-  	data[i][0] = lists[i].childNodes[0].nodeValue.slice(0,-5);
-  	data[i][1] = Number(lists[i].children[0].childNodes[0].nodeValue);
+  for (var i = 0; i < source.children.length; i++) {
+  	var list = source.children[i];
+  	var str = list.innerHTML.split('空气质量：')[0];
+  	var num = Number(list.children[0].innerHTML);
+  	data.push([str,num]); 
   }
   /*
   data = [
@@ -78,7 +87,7 @@ function render(data) {
 	var str = '';
 	var chineseNum = ['一','二','三','四','五','六','七','八','九'];
 	for (var i = 0; i < data.length; i++) {
-		str += '<li>第' + chineseNum[i] +'名：' + data[i][0] + '北京空气质量：<b>' + data[i][1] + '</b></li>';
+		str += '<li>第' + chineseNum[i] +'名：' + data[i][0] + '空气质量：<b>' + data[i][1] + '</b></li>';
 	}
     document.getElementById('resort').innerHTML = str;
 }
