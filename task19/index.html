@@ -1,0 +1,165 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>task19</title>
+</head>
+    <style type="text/css">
+    	*{
+    		padding: 0;
+    		margin: 0;
+    	}
+        body{
+        	margin-top: 50px;
+
+        }
+
+        #main{
+        	display: table;
+        	margin: 0 auto;
+        }
+        #control{
+            width: 1300px;
+            height: 50px;
+            background-color: #EEEEEE;
+            margin: 0 auto;
+            margin-top: 10px;
+            text-align: center;
+            line-height: 50px;
+        }
+        #control button{
+        	width: 80px;
+        	height: 25px;
+        	border: none;
+        	border-radius: 25px;
+        	background-color: #4DC0F9;
+        	color: #FFFFFF;
+        	cursor: pointer;
+        }
+
+        #control button:hover,#control button:active{
+        	background-color: #E83C3C;
+        	cursor: pointer;
+        }
+
+        #box{
+        	width: 1300px;
+        	height: 650px;
+        	background-color: #EEEEEE;
+            vertical-align: bottom;
+        }
+
+    	#box div{
+    		display: inline-block;
+    		background-color: #580094;
+    		margin-left: 10px;
+    	}
+
+        #box span{
+            display: inline-block;
+
+            width: 1px;
+            height: 650px;
+            margin-right: -1px;
+        }
+
+    	#box div:hover,#box div:active{
+    		background-color: #E83C3C;
+    		cursor: pointer;
+    	}    	
+    </style>
+<body>
+    <div id="main">
+        <!-- span占位让条形图对齐box底部 --> 
+        <div id="box"><span></span></div>   
+        <div id="control">
+            <input id="str" style="width: 200px; height: 30px" maxlength="3" size="14" name="amount" type="text" min="10" max="100" placeholder="请输入10-100之间的数字" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();" />
+
+        	<button id="left-in">左侧入</button>
+        	<button id="right-in">右侧入</button>
+        	<button id="left-out">左侧出</button>
+        	<button id="right-out">右侧出</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        function changeRank(){
+        	var box = document.getElementById('box');
+        	var leftIn = document.getElementById('left-in');
+        	var leftOut = document.getElementById('left-out');
+        	var rightIn = document.getElementById('right-in');
+        	var rightOut = document.getElementById('right-out');
+            // (function(){
+            //     document.getElementById('str').onkeydown = function(e){
+            //         var keyCode;
+            //         window.event ? keyCode = e.keyCode :keyCode = e.which;
+            //         var keyStr = String.fromCharCode(keyCode);
+            //         return /^(?:[1-9]\d|100)$/.test(keyStr);
+            //     }
+            // })();
+        	//按钮点击事件
+        	leftIn.onclick = function(){
+        		var str = Number(document.getElementById('str').value.trim());
+                var div = box.getElementsByTagName('div');
+                if (div.length >= 60) {
+                    alert('最多只能输入60组数据');
+                    return;
+                }
+                if(typeof str !== 'number' || str < 10 || str > 100){
+                    alert('请输入10-100之间的数字');
+                    return;
+                }
+        		var newEle = document.createElement('div');
+                newEle.style.width = '10px';
+                newEle.style.height = str*6 + 'px';
+        		box.insertBefore(newEle,box.children[0]);
+        	}
+
+        	rightIn.onclick = function(){
+                var str = Number(document.getElementById('str').value.trim());
+                var div = box.getElementsByTagName('div');
+                if (div.length >= 60) {
+                    alert('最多只能输入60组数据');
+                    return;
+                }
+                if(typeof str !== 'number' || str < 10 || str > 100){
+                    alert('请输入10-100之间的数字');
+                    return;
+                }
+                var newEle = document.createElement('div');
+                newEle.style.width = '10px';
+                newEle.style.height = str*6 + 'px';
+                box.appendChild(newEle);
+        	}
+
+        	leftOut.onclick = function(){
+        		var div = box.getElementsByTagName('div');
+        		if(div.length < 1){
+        			alert('没有可移除元素');
+        			return;
+        		}
+        		box.removeChild(div[0]);
+        	}
+
+        	rightOut.onclick = function(){
+        		var div = box.getElementsByTagName('div');
+        		if(div.length < 1){
+        			alert('没有可移除元素');
+        			return;
+        		}
+        		box.removeChild(div[div.length-1]);
+        	}
+
+            //元素点击移除事件
+            box.addEventListener('click',function(e){
+            	if(e.target && e.target.nodeName === 'DIV'){
+            		box.removeChild(e.target);
+            	}
+            })
+
+        }
+
+        changeRank();
+    </script>
+</body>
+</html>
