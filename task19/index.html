@@ -111,7 +111,16 @@
                 }
         		var newEle = document.createElement('div');
                 newEle.style.width = '10px';
-                newEle.style.height = str*6 + 'px';
+                //条形图添加时动画
+        		var high = 0;
+        		var a = setInterval(function(){
+                    high = high + 6; 
+                    if (high === 6*str){
+                    	clearInterval(a);
+                    }
+                    newEle.style.height = high + 'px';
+        		},3);
+
         		box.insertBefore(newEle,box.children[0]);
         	}
 
@@ -128,7 +137,16 @@
                 }
                 var newEle = document.createElement('div');
                 newEle.style.width = '10px';
-                newEle.style.height = str*6 + 'px';
+                //条形图添加时动画
+        		var high = 0;
+        		var a = setInterval(function(){
+                    high = high + 6; 
+                    if (high === 6*str){
+                    	clearInterval(a);
+                    }
+                    newEle.style.height = high + 'px';
+        		},3);
+
                 box.appendChild(newEle);
         	}
 
