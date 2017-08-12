@@ -88,6 +88,10 @@
         	//按钮点击事件
         	leftIn.onclick = function(){
         		var str = document.getElementById('str').value.toString().trim();
+                if(str === ''){
+                    alert('请输入数据');
+                    return;
+                }
         		var newEle = document.createElement('div');
         		newEle.innerHTML = str;
         		box.insertBefore(newEle,box.children[0]);
@@ -95,6 +99,10 @@
 
         	rightIn.onclick = function(){
         		var str = document.getElementById('str').value.toString().trim();
+                if(str === ''){
+                    alert('请输入数据');
+                    return;
+                }
         		var newEle = document.createElement('div');
         		newEle.innerHTML = str;
         		box.appendChild(newEle);
