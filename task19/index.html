@@ -10,7 +10,9 @@
     		margin: 0;
     	}
         body{
-        	margin-top: 50px;
+        	margin-top: 10px;
+        	font-family: '微软雅黑';
+        	font-size: 12px;
 
         }
 
@@ -19,7 +21,7 @@
         	margin: 0 auto;
         }
         #control{
-            width: 1300px;
+            width: 1210px;
             height: 50px;
             background-color: #EEEEEE;
             margin: 0 auto;
@@ -43,21 +45,46 @@
         }
 
         #box{
-        	width: 1300px;
+        	width: 1210px;
         	height: 650px;
         	background-color: #EEEEEE;
             vertical-align: bottom;
         }
 
     	#box div{
+    		position: relative;
     		display: inline-block;
     		background-color: #580094;
     		margin-left: 10px;
+    		width:10px;
+    		transition: height 500ms;
     	}
 
-        #box span{
-            display: inline-block;
+    	#box div.purple{
+            background-color: #580094;   		
+    	}
 
+    	#box div.green{
+    		background-color: green;
+    	}
+
+    	#box div.red{
+    		background-color: red;
+    	}
+
+    	#box div span{
+    		position: absolute;
+    		background-color: #E83C3C;
+    		color: #FFFFFF;
+    		top: -18px;
+    		left: -5px;
+            width: 20px;
+            height: 15px;
+            text-align: center;
+    	}
+
+        #box>span{
+            display: inline-block;
             width: 1px;
             height: 650px;
             margin-right: -1px;
@@ -69,19 +96,22 @@
     	}    	
     </style>
 <body>
-    <div id="main">
+    <article id="main">
         <!-- span占位让条形图对齐box底部 --> 
-        <div id="box"><span></span></div>   
-        <div id="control">
+        <section id="box"><span></span></section>   
+        <section id="control">
             <input id="str" style="width: 200px; height: 30px" maxlength="3" size="14" name="amount" type="text" min="10" max="100" placeholder="请输入10-100之间的数字" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+/,'');}).call(this)" onblur="this.v();" />
 
         	<button id="left-in">左侧入</button>
         	<button id="right-in">右侧入</button>
         	<button id="left-out">左侧出</button>
         	<button id="right-out">右侧出</button>
+        	<button id="random-num">随机数据</button>
         	<button id="rank">小到大</button>
-        </div>
-    </div>
+            <button id="visit-rank">可视排序</button>
+            间隔 = <input type="text" name="" value="20" id="speed" />
+        </section>
+    </article>
     <script type="text/javascript">
 
         function changeRank(){
@@ -91,6 +121,8 @@
         	var rightIn = document.getElementById('right-in');
         	var rightOut = document.getElementById('right-out');
         	var rank = document.getElementById('rank');
+        	var randomNum = document.getElementById('random-num');
+        	var visitRank = document.getElementById('visit-rank');
             // (function(){
             //     document.getElementById('str').onkeydown = function(e){
             //         var keyCode;
@@ -112,8 +144,9 @@
                     return;
                 }
         		var newEle = document.createElement('div');
-                newEle.style.width = '10px';
+        		newEle.setAttribute('title',str);
                 //条形图添加时动画
+                // newEle.style.height = 6 * str + 'px';
         		var high = 0;
         		var a = setInterval(function(){
                     high = high + 6; 
@@ -121,7 +154,7 @@
                     if (high === 6*str){
                     	clearInterval(a);
                     }
-        		},3);
+        		},1);                
 
         		box.insertBefore(newEle,box.children[0]);
         	}
@@ -138,8 +171,9 @@
                     return;
                 }
                 var newEle = document.createElement('div');
-                newEle.style.width = '10px';
+                newEle.setAttribute('title',str);
                 //条形图添加时动画
+                // newEle.style.height = 6 * str + 'px';
         		var high = 0;
         		var a = setInterval(function(){
                     high = high + 6; 
@@ -147,7 +181,7 @@
                     if (high === 6*str){
                     	clearInterval(a);
                     }
-        		},3);
+        		},1);
 
                 box.appendChild(newEle);
         	}
@@ -170,6 +204,96 @@
         		box.removeChild(div[div.length-1]);
         	}
 
+        	//随机生成一组数据
+            randomNum.onclick = function(){
+            	box.innerHTML = '<span></span>';
+        		for (var i = 0; i < 60; i++) {
+        			var newEle = document.createElement('div');
+        			var randomHigh = 6*Math.ceil(10 + 90*Math.random());
+        			newEle.setAttribute('title',randomHigh/6);
+			        newEle.style.height = randomHigh + 'px';
+			        box.appendChild(newEle);
+        		}              	
+            }
+
+       //      visitRank.onclick = function(){
+	    		// var div = box.getElementsByTagName('div');
+	    		// for (var i = 0; i < div.length - 1; i++) {
+	    		// 	for (var j = 0; j < div.length - i -1; j++) {
+	    		// 		    div[j].className = 'green';
+	    		// 		    div[j + 1].className = 'green';
+	    		// 		    if(parseInt(div[j].style.height) > parseInt(div[j + 1].style.height)){
+	    		// 		    	var send = div[j].style.height;
+	    		// 		    	div[j].style.height = div[j + 1].style.height;
+	    		// 		    	div[j + 1].style.height = send;
+	    		// 		    }
+	    		// 	}
+	    		// }
+       //      }
+
+            visitRank.onclick = function(){
+            	var speed = Number(document.getElementById('speed').value.trim());
+            	if(typeof speed !== 'number'){
+            	    alert('请输入数字');
+            	    return;
+            	}
+            	if(speed < 5){
+            	    alert('间隔不能小于5');
+            	    return;
+            	}
+                function sortOne(){
+	             	var j = 0;
+	            	var lastCount = setInterval(function(){
+	            		if (j > div.length - 1 - i) {                  		
+	            			clearInterval(lastCount); 
+	            			div[j].className = 'purple';
+	            			return;                  		
+	            		}
+	            		div[j].className = 'green';
+	            		div[j + 1].className = 'red';
+	            		if(parseInt(div[j].style.height) > parseInt(div[j + 1].style.height)){
+	            			var send = div[j].style.height;
+	            			div[j].style.height = div[j + 1].style.height;
+	            			div[j + 1].style.height = send;
+	            	    }   
+	            	    j = j + 1;
+	            	},speed);               	
+                }
+
+
+                function only(){
+	             	var j = 0;
+	            	var lastCount = setInterval(function(){
+	            		if (j > div.length - 1 - 1) {                  		
+	            			clearInterval(lastCount); 
+	            			div[j].className = 'purple';
+	            			return;                  		
+	            		}
+	            		div[j].className = 'green';
+	            		div[j + 1].className = 'red';
+	            		if(parseInt(div[j].style.height) > parseInt(div[j + 1].style.height)){
+	            			var send = div[j].style.height;
+	            			div[j].style.height = div[j + 1].style.height;
+	            			div[j + 1].style.height = send;
+	            	    }   
+	            	    j = j + 1;
+	            	},speed);               	
+                }     
+                only();           
+
+	    		var div = box.getElementsByTagName('div');
+	    		var i = 0;
+	    		var allCount = setInterval(function(){
+	    			if (i > div.length - 1) {
+	    				clearInterval(allCount);
+	    				return;
+	    			}
+                    sortOne(1);
+                    i = i + 1;
+	    		},speed*65);
+	    		}
+
+
             //元素点击移除事件
             box.addEventListener('click',function(e){
             	if(e.target && e.target.nodeName === 'DIV'){
@@ -177,6 +301,26 @@
             	}
             });
 
+
+
+            // //鼠标悬停时，条形图显示数据的值
+            // box.addEventListener('mouseover',function(e){
+            // 	if(e.target && e.target.nodeName === 'DIV'){
+            // 		var high = parseInt(e.target.style.height)/6;
+            // 		var span = document.createElement('span');
+            // 		span.innerHTML = high;
+            // 		e.target.appendChild(span);
+            // 	}
+            // });
+
+            // //鼠标离开时，删除span
+            // box.addEventListener('mouseout',function(e){
+            // 	if(e.target && e.target.nodeName === 'DIV'){
+            // 		e.target.innerHTML = '';	
+            // 	}
+            // });            
+            
+            //从小到大排列
             control.addEventListener('click',function(a){
             	if(a.target && a.target.id === 'rank'){
             		var div = box.getElementsByTagName('div');
@@ -191,26 +335,11 @@
                     //渲染重新排列后的条形图
             		for (var i = 0; i < div.length; i++) {
     			        div[i].style.height = arr[i] + 'px';
+    			        div[i].setAttribute('title',arr[i]/6);
             		}  
-                    //另一种方法渲染
-              //       var chartNum = 0;
-            		// var wholeChart = setInterval(function(){
-              //           chartNum = chartNum + 1;
-              //           var high = 0;
-              //           var chart = setInterval(function(){
-              //           	high = high + 6;
-              //               div[chartNum-1].style.height = high + 'px';
-              //               if (high === arr[chartNum-1]){
-              //               	clearInterval(chart);
-              //               }                               
-              //           },1)
-              //           if (chartNum === arr.length){
-              //           	clearInterval(wholeChart);
-              //           }  
-            		// },500);
-
             	}
             });
+
 
         }
         changeRank();
