@@ -79,6 +79,7 @@
         	<button id="right-in">右侧入</button>
         	<button id="left-out">左侧出</button>
         	<button id="right-out">右侧出</button>
+        	<button id="rank">小到大</button>
         </div>
     </div>
     <script type="text/javascript">
@@ -89,6 +90,7 @@
         	var leftOut = document.getElementById('left-out');
         	var rightIn = document.getElementById('right-in');
         	var rightOut = document.getElementById('right-out');
+        	var rank = document.getElementById('rank');
             // (function(){
             //     document.getElementById('str').onkeydown = function(e){
             //         var keyCode;
@@ -115,10 +117,10 @@
         		var high = 0;
         		var a = setInterval(function(){
                     high = high + 6; 
+                    newEle.style.height = high + 'px';
                     if (high === 6*str){
                     	clearInterval(a);
                     }
-                    newEle.style.height = high + 'px';
         		},3);
 
         		box.insertBefore(newEle,box.children[0]);
@@ -141,10 +143,10 @@
         		var high = 0;
         		var a = setInterval(function(){
                     high = high + 6; 
+                    newEle.style.height = high + 'px';
                     if (high === 6*str){
                     	clearInterval(a);
                     }
-                    newEle.style.height = high + 'px';
         		},3);
 
                 box.appendChild(newEle);
@@ -173,10 +175,44 @@
             	if(e.target && e.target.nodeName === 'DIV'){
             		box.removeChild(e.target);
             	}
-            })
+            });
+
+            control.addEventListener('click',function(a){
+            	if(a.target && a.target.id === 'rank'){
+            		var div = box.getElementsByTagName('div');
+                    var arr = [];
+            		for (var i = 0; i < div.length; i++) {
+            			arr.push(parseInt(div[i].style.height));
+            		}
+            		//重新排列已输入条形图的高
+            		arr.sort(function(a,b){
+            			return a - b;
+            		})
+                    //渲染重新排列后的条形图
+            		for (var i = 0; i < div.length; i++) {
+    			        div[i].style.height = arr[i] + 'px';
+            		}  
+                    //另一种方法渲染
+              //       var chartNum = 0;
+            		// var wholeChart = setInterval(function(){
+              //           chartNum = chartNum + 1;
+              //           var high = 0;
+              //           var chart = setInterval(function(){
+              //           	high = high + 6;
+              //               div[chartNum-1].style.height = high + 'px';
+              //               if (high === arr[chartNum-1]){
+              //               	clearInterval(chart);
+              //               }                               
+              //           },1)
+              //           if (chartNum === arr.length){
+              //           	clearInterval(wholeChart);
+              //           }  
+            		// },500);
+
+            	}
+            });
 
         }
-
         changeRank();
     </script>
 </body>
