@@ -1,0 +1,143 @@
+	*{
+		margin: 0;
+		padding: 0;
+		font-family: "微软雅黑";
+		font-size: 16px;
+	}
+
+	article{
+		width: 1200px;
+		margin: 20px auto;
+		padding: 20px;
+		text-align: center;
+		background-color: #eeeeee;
+	}
+
+    #web-rank{
+    	margin: 0 auto;
+    }
+
+	#web-rank,tr,th,td{
+		border-collapse:collapse;
+		border:2px solid #FFFFFF;
+	}
+    
+    tr,th,td{
+    	height: 30px;
+    }
+
+    th,td{
+    	padding: 0 50px;
+    }
+
+	#web-rank thead{
+		background-color: #a60000;
+		color: #ffffff;
+	}
+
+    #web-rank tbody tr:nth-child(even){
+    	background-color: #ff7373;
+    }
+
+    #web-rank tbody tr:nth-child(1),
+    #web-rank tbody tr:nth-child(2),
+    #web-rank tbody tr:nth-child(3){
+    	color: green;
+    }
+    
+    article input{
+    	width: 200px;
+    	height: 30px;
+    	line-height: 30px;
+    	transition: border-color,width .5s;
+    }
+
+    article input:focus{
+    	width: 400px;
+    	border-color: red;
+    }
+ 
+    #banner{
+    	position: relative;
+    	width: 300px;
+    	height: 300px;
+    	margin: 0 auto;
+    	overflow: hidden;
+    }
+    #banner .slides{
+    	position: absolute;
+    	left: 0;
+    	top: 0;
+    	width: 100%;
+    	height: 100%;
+    }
+
+    #banner .slides div{
+    	position: absolute;
+    	left: -100%;
+    	top: 0;
+    	width: 100%;
+    	height: 100%;
+    }
+
+    @keyframes slide-in {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 0%;
+      }
+    }
+
+    #banner .slides div:target{
+    	left: 0%;
+    	animation: .5s slide-in linear;
+    }
+
+    .placeholder{
+    	display: block;
+    	height: 100%;
+    	width: 100%;
+    	background-color: #200772;
+    }
+
+    #slide-1{
+    	background-color: green;
+    }
+
+    #slide-2{
+    	background-color: red;
+    }
+
+    #slide-3{
+    	background-color: blue;
+    }
+
+
+
+
+
+    #banner .btns{
+    	position: absolute;
+    	bottom: 10px;
+    	right: 10px;
+    	z-index: 100;
+    }
+
+    #banner .btns a{
+    	text-decoration: none;
+    	display: inline-block;
+    	width: 30px;
+    	height: 30px;
+    	line-height: 30px;
+    	background-color: rgba(255,255,255,0.3);
+    	color: #ffffff;
+    	text-align: center;
+    	margin-left: 10px;
+    	font-size: 20px;
+    }
+
+    #banner .btns a:hover,
+    #banner .btns a:active{
+    	background-color: rgba(255,255,255,0.5);
+    }
