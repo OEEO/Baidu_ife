@@ -35,13 +35,11 @@
 		color: #ffffff;
 	}
 
-    #web-rank tbody tr:nth-child(even){
+    #web-rank tbody tr:nth-of-type(even){
     	background-color: #ff7373;
     }
 
-    #web-rank tbody tr:nth-child(1),
-    #web-rank tbody tr:nth-child(2),
-    #web-rank tbody tr:nth-child(3){
+    #web-rank tbody tr:nth-child(-n+3){
     	color: green;
     }
     
