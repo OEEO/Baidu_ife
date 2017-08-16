@@ -1,0 +1,119 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>task20</title>
+</head>
+    <style type="text/css">
+    	*{
+    		padding: 0;
+    		margin: 0;
+    	}
+        body{
+        	margin-top: 400px;
+
+        }
+
+        #main{
+        	display: table;
+        	margin: 0 auto;
+        }
+
+        #control button{
+        	width: 80px;
+        	height: 25px;
+        	border: none;
+        	border-radius: 25px;
+        	background-color: #4DC0F9;
+        	color: #FFFFFF;
+        	cursor: pointer;
+        }
+
+        #control button:hover,#control button:active{
+        	background-color: #E83C3C;
+        	cursor: pointer;
+        }
+
+        #box{
+        	margin-top: 50px;
+        	background-color: #EEEEEE;
+        }
+
+    	#box div{
+    		display: inline-block;
+    		width: 70px;
+    		height: 40px;
+    		line-height: 40px;
+    		text-align: center;
+    		background-color: #580094;
+    		margin-right: 10px;
+    		margin-bottom: 20px;
+    		float: left;
+    		color: #FFFFFF;
+    	}
+
+    	#box div:hover,#box div:active{
+    		background-color: #E83C3C;
+    		cursor: pointer;
+    	}    	
+
+    </style>
+<body>
+    <div id="main">
+        <div id="control">
+        	<textarea id="str"></textarea>
+        	<button id="input">输入</button>
+        	<input type="text" name="" id="search-text">
+        	<button id="search">搜索</button>
+        </div>
+    	<div id="box">
+
+    	</div>    	
+    </div>
+    <script type="text/javascript">
+        function changeRank(){
+        	var box = document.getElementById('box');
+        	var input = document.getElementById('input');
+        	var searchBtn = document.getElementById('search');
+
+        	//按钮点击事件
+        	input.onclick = function(){
+        		var str = document.getElementById('str').value.trim().match(/[0-9a-zA-Z\u4e00-\u9fa5]+/gm);
+                if(str === ''){
+                    alert('请输入数据');
+                    return;
+                }
+                for (var i = 0; i < str.length; i++) {
+                	var newEle = document.createElement('div');
+                	newEle.innerHTML = str[i];
+                	box.appendChild(newEle);
+                }
+        	}
+
+        	searchBtn.onclick = function(){
+        		var searchText = document.getElementById('search-text').value.trim();
+        		if(searchText == undefined){
+        			alert('请输入要搜索的内容');
+        			return;
+        		}
+        		var div = box.getElementsByTagName('div');
+        		for (var i = 0; i < div.length; i++) {
+        			div[i].style.backgroundColor = '#580094';
+        			if (div[i].innerHTML.search(searchText) != -1) {
+        				div[i].style.backgroundColor = 'red';
+        			}
+        		}
+        	}
+
+            //元素点击移除事件
+            box.addEventListener('click',function(e){
+            	if(e.target && e.target.nodeName === 'DIV'){
+            		box.removeChild(e.target);
+            	}
+            })
+
+        }
+        changeRank();
+    </script>
+</body>
+</html>
