@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<title>Bootstrap 模板</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<!-- 引入 Bootstrap -->
+  	<link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+  	<style type="text/css">
+  		*{
+			margin: 0;
+			padding: 0;
+  		}
+        .flex-container{
+        	display: flex;
+        	justify-content: space-between;
+        	align-items: center;
+        	flex:none;
+
+        	border: 2px solid green;
+        	width: 80%;
+        	margin: 50px auto;
+        	padding: 20px;
+        	box-sizing: border-box;
+        }
+        .flex-items{
+        	width: 150px;
+        	border: 2px solid red;
+        	padding: 0;
+        	margin-bottom: 10px;
+        	box-sizing: border-box;
+        }
+        .one{
+        	height: 120px;
+        }
+        .two{
+        	height: 100px;
+        }
+        .three{
+        	height: 40px;
+        }
+        .four{
+        	height: 200px;
+        	border: 2px solid blue !important;
+        }       
+
+        @media all and (max-width: 640px){
+        	.flex-container{
+        		flex-wrap: wrap;
+        		align-items: flex-start;
+        	}
+        	.four{
+        		order: -1;
+        	}
+        } 
+
+  	</style>
+</head>
+<body>
+	<div class="flex-container">
+		<div class="flex-items one">1</div>
+		<div class="flex-items two">2</div>
+		<div class="flex-items three">3</div>
+		<div class="flex-items four">4</div>
+	</div>	
+</body>
+</html>
