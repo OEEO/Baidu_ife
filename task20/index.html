@@ -55,7 +55,14 @@
     	#box div:hover,#box div:active{
     		background-color: #E83C3C;
     		cursor: pointer;
-    	}    	
+    	}  
+
+    	textarea{
+    		width: 300px;
+    		height: 200px;
+    		overflow-y: scroll;
+    		overflow-x: hidden;
+    	}  	
 
     </style>
 <body>
@@ -92,7 +99,7 @@
 
         	searchBtn.onclick = function(){
         		var searchText = document.getElementById('search-text').value.trim();
-        		if(searchText == undefined){
+        		if(searchText === ''){
         			alert('请输入要搜索的内容');
         			return;
         		}
