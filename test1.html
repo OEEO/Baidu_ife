@@ -1,0 +1,33 @@
+<!DOCTYPEhtml>
+ 
+<head>
+<meta charset="utf-8">
+<title>test.html</title>
+ 
+<script language="javascript" type="text/javascript">
+ 
+function show(){
+      
+    var xx=window.frames[0].document.getElementById("bd").value;
+ 
+    document.getElementById("ss").value=xx;
+ 
+}
+ 
+</script>
+ 
+</head>
+ 
+<body>
+ 
+<p>this content for test.html info</p>
+ 
+<input type="button" onClick="show()" value="test2.html">
+ 
+<input id="ss"></div>
+ 
+<iframe id="myframe" src="test2.html" style="display: none;"></iframe>
+ 
+</body>
+ 
+</html>
