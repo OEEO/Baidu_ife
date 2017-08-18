@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">   
+	<title>task9</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <!-- 页面容器 -->
+    <article id="container">
+        <!-- 页面头部 -->
+        <header class=".clearfloat">
+            <!-- logo -->
+            <div class="header-logo">
+                <embed src="images/icons/square.svg"></embed>
+            </div>
+            <!-- 登录 -->
+            <div class="log-in">
+                <embed src="images/icons/avatar.svg"></embed>
+                <span>登录</span>
+            </div>
+            <!-- 搜索 -->
+            <div class="search-global">
+                <embed src="images/icons/search.svg" id="search"></embed>
+                <input type="text" name="">
+            </div>
+        </header>
+        <!-- 主体部体 -->
+        <article id="wrap-main" class="clearfloat">
+        <!-- 左边侧栏 -->
+            <aside id="aside">
+                <!-- 侧栏顶部 -->
+                <article>
+                    
+                </article>
+                <!-- 侧栏下方列表 -->
+                <article>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </article>
+            </aside>
+            <!-- 页面主体 -->
+            <article id="main">
+                <!-- 主体顶部标题栏文件位置 -->
+                <section class="file-path">
+                    <p>C站  / 个人报表 / 文件一／文档一</p>
+                </section>
+                <!-- 主体的内容部分 -->
+                <section class="wrap-content">
+                    <!-- 下拉菜单搜索 -->
+                    <article class="select-to-search b-shadow">
+                        <section class="select-to-search-p1">
+                            <span>查询项</span>
+                            <div class="sel-wrap">
+                                <select class="items-sel sel">
+                                    <option>第一项</option>
+                                    <option>第二项</option>
+                                    <option>第三项</option>
+                                </select>
+                            </div>
+                        </section>
+                        <section class="select-to-search-p2 clearfloat">
+                            <div class="change-arrow">
+                                <span>换</span>
+                            </div>
+                            <div class="buyer">
+                                <span>买方</span>
+                                <div class="sel-wrap">
+                                    <select class="buyer-sel sel">
+                                        <option>张三</option>
+                                        <option>李四</option>
+                                        <option>王五</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="seller">
+                                <span>买方</span>
+                                <div class="sel-wrap">
+                                    <select class="seller-sel sel">
+                                        <option>Dean</option>
+                                        <option>Ayn</option>
+                                        <option>Rand</option>
+                                    </select>
+                                </div>
+                            </div>                            
+                        </section>
+                        <section class="select-to-search-p3">
+                            <div class="date">
+                                <span>日期</span>
+                                <div class="">
+                                    <input type="date" name="" value="2016-04-01"/>
+                                </div>
+                            </div>
+                            <div class="all-time">
+                                <span>总耗时</span>
+                                <div class="sel-wrap">
+                                    <select class="all-time-sel sel">
+                                        <option>10天</option>
+                                        <option>100天</option>
+                                        <option>200天</option>
+                                    </select>
+                                </div>
+                            </div>       
+
+                            <div class="people-num">
+                                <span>人数</span>
+                                <div class="sel-wrap">
+                                    <select class="people-num-sel sel">
+                                        <option>10</option>
+                                        <option>100</option>
+                                        <option>1000</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="items-num">
+                                <span>成交项</span>
+                                <div class="sel-wrap">
+                                    <select class="items-num-sel sel">
+                                        <option>10 项</option>
+                                        <option>20 项</option>
+                                        <option>30 项</option>
+                                    </select>
+                                </div>
+                            </div>                                 
+                        </section>
+                        <section class="select-to-search-p4">
+                            <button id="sel-submit">提交</button>
+                        </section>
+                    </article>
+                    <!-- 历史成交查询 -->
+                    <article class="history">
+                        <!-- 左箭头 -->
+                        <button class="left-arrow b-shadow">
+                            <embed src="images/icons/left-arrow.svg"></embed>
+                        </button>
+                        <ul>
+                            <li class="history-items history-on b-shadow">
+                                <p class="history-time">10:00 am</p>
+                                <p class="history-price"><span>￥</span>1200</p>
+                            </li>
+                            <li class="history-items b-shadow">
+                                <p class="history-time">10:00 am</p>
+                                <p class="history-price"><span>￥</span>1200</p>
+                            </li>
+                            <li class="history-items b-shadow">
+                                <p class="history-time">10:00 am</p>
+                                <p class="history-price"><span>￥</span>1200</p>
+                            </li>
+                            <li class="history-items b-shadow">
+                                <p class="history-time">10:00 am</p>
+                                <p class="history-price"><span>￥</span>1200</p>
+                            </li>
+                            <li class="history-items b-shadow">
+                                <p class="history-time">10:00 am</p>
+                                <p class="history-price"><span>￥</span>1200</p>
+                            </li>
+                            <li class="history-items b-shadow">
+                                <p class="history-time">10:00 am</p>
+                                <p class="history-price"><span>￥</span>1200</p>
+                            </li>
+                        </ul>
+                        <button class="right-arrow b-shadow">
+                            <embed src="images/icons/right-arrow.svg"></embed>
+                        </button>
+                        <button class="history-search b-shadow">
+                            <embed src="images/icons/calendar.svg"></embed>
+                            <span>历史查询</span>
+                        </button>
+                    </article>
+                    <!-- 月份统计数据色块 -->
+                    <article class="count">
+                        <p>2016年4月份统计</p>
+                        <div class="count-items">
+                            <ul>
+                                <li class="b-shadow">
+                                    <p>
+                                        <span>133311</span>
+                                        <br>
+                                        <span>成交量</span>
+                                    </p>
+                                    <div class="g-rect"></div>
+                                </li>
+                                <li class="b-shadow">
+                                    <p>
+                                        <span>133311</span>
+                                        <br>
+                                        <span>成交量</span>
+                                    </p>
+                                    <div class="b-rect"></div>
+                                </li>
+                                <li class="b-shadow">
+                                    <p>
+                                        <span>133311</span>
+                                        <br>
+                                        <span>成交量</span>
+                                    </p>
+                                    <div class="r-rect"></div>
+                                </li>
+                                <li class="b-shadow">
+                                    <p>
+                                        <span>133311</span>
+                                        <br>
+                                        <span>成交量</span>
+                                    </p>
+                                    <div class="y-rect"></div>
+                                </li>                                
+                            </ul>                   
+                        </div>
+                    </article>
+                    <!-- 项目情况 -->
+                    <article class="project-info">
+                        <section>
+                            <!-- 框宽度及角控制 -->
+                            <div class="win-box">
+                                <!-- 框标题 -->
+                                <div>
+                                    <p>第一组项目</p>    
+                                </div>
+                                <!-- 框内容 -->
+                                <div class="win-box-a">
+                                    <div>
+                                        <!-- 表格头上的按钮 -->
+                                        <ul>
+                                            <li><a href="#table1">第一项</a></li>
+                                            <li><a href="#table2">第一项</a></li>
+                                            <li><a href="#table3">第一项</a></li>
+                                            <li><a href="#table4">第一项</a></li>
+                                            <li><a href="#table5">第一项</a></li>
+                                        </ul>
+                                        <!-- 表格们 -->                                    
+                                        <div class="table-wrap">
+                                            <table id="table1" class="table-on">
+                                                <tr>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                    <td>材料一</td>
+                                                </tr>
+                                            </table>
+                                            <table id="table2">
+                                                <tr>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                    <td>材料二</td>
+                                                </tr>
+                                            </table>
+                                            <table id="table3">
+                                                <tr>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料三</td>
+                                                    <td>材料一</td>
+                                                </tr>
+                                            </table>
+                                            <table id="table4">
+                                                <tr>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                    <td>材料四</td>
+                                                </tr>
+                                            </table>
+                                            <table id="table5">
+                                                <tr>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                    <td>材料五</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+
+                                    </div>
+                                </div>    
+                            </div>
+                            <!-- 框宽度及角控制 -->
+                            <div class="win-box" style="width: 351px;">
+                                <!-- 框标题 -->
+                                <div>
+                                      <p>第一组项目</p>    
+                                </div>
+                                <!-- 框内容 -->
+                                <div>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+                    <!-- 日历与汽车品牌榜 -->
+                    <article class="date-and-car">
+                        <!-- 日历 -->
+                        <section>
+                            <!-- 框宽度及角控制 -->
+                            <div class="win-box" style="width: 351px;">
+                                <!-- 框标题 -->
+                                <div>
+                                    <p>日历</p>      
+                                </div>
+                                <!-- 框内容 -->
+                                <div>
+                                    
+                                </div>
+                            </div>
+                            <!-- 框宽度及角控制 -->
+                            <!-- 汽车品牌榜 -->
+                            <div class="win-box">
+                                <!-- 框标题 -->
+                                <div>
+                                    <p>汽车品牌榜</p>      
+                                </div>
+                                <!-- 框内容 -->
+                                <div>
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+                </section>
+            </article>
+        </article>    
+    </article>
+</body>
+</html>
