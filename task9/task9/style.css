@@ -100,6 +100,7 @@
 		width: 15px;
 		height: 16px;
 		vertical-align: middle;
+		cursor: pointer;
 	}
 
 	header .log-in span{
@@ -114,10 +115,134 @@
 	}
 	/*左侧栏*/
 	#aside{
+		font-family: "黑体";
 		width: 260px;
 		float: left;
 		background-color: #2a2e3d;
 		height: 1213px;
+	}
+
+	#aside .aside-head{
+		padding-top: 21px;
+		height: 152px;
+		color: #f6f5f5;
+		font-family: "黑体";
+		font-size: 16px;
+	}
+
+	#aside .aside-avatar{
+		margin-left: 48px;
+		vertical-align: middle;
+		display: inline-block;
+		width: 57px;
+		height: 57px;
+		background: url(images/icons/aside-avatar.svg) no-repeat center scroll transparent;
+	}
+
+	#aside .aside-head section:nth-child(1) span{
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 10px;
+	}
+
+	#aside .aside-head section:nth-child(2){
+		width: 180px;
+		margin: 0 auto;
+		text-align: center;
+		margin-top: 24px;
+		color: #6e8095;
+	}
+	#aside .aside-head section:nth-child(2) div{
+		display: inline-block;
+	}
+	.aside-head-collect span:nth-child(1),
+	.aside-head-collect span:nth-child(1){
+		font-family: "黑体";
+	}
+	.aside-head-collect span:nth-child(2),
+	.aside-head-collect span:nth-child(2){
+		font-family: "宋体";
+	}
+	.aside-head-collect{
+		border-right: 2px solid #313545;
+		padding-right: 33px;
+	}
+	.aside-head-fans{
+		padding-left: 33px;
+	}
+
+	/*侧栏列表*/
+	.aside-lists{
+
+	}
+	.aside-lists ul{
+
+	}	
+	.lists>li{
+		padding-left: 74px;
+		color: #6e8095;
+		height: 50px;
+		line-height: 50px;
+	}
+
+	.lists>li:nth-child(1){
+		height: 201px;
+		list-style: url(images/icons/personalChart.svg) inside;
+	}
+	.lists>li:nth-child(2),
+	.lists>li:nth-child(4),
+	.lists>li:nth-child(5){
+		list-style: url(images/icons/star.svg) inside;
+	}
+	.lists>li:nth-child(3){
+		list-style: url(images/icons/partake.svg) inside;
+	}
+	.lists>li:nth-child(6){
+		list-style: url(images/icons/accoutInfo.svg) inside;
+	}
+
+	.lists>li:hover{
+		background-color: #393d4e;
+	}
+
+	.lists>li>span{
+		display: inline-block;
+		margin-left: 8px;
+	}
+
+	.folders>li{
+		line-height: 32px;
+		list-style: url(images/icons/folder.svg) inside;
+		background: url(images/icons/folder-r-arrow.svg) no-repeat scroll left center transparent;
+		padding-left: 20px;
+		margin-left: 28px;
+	}
+	.folders>li:nth-child(2){
+		list-style: url(images/icons/folder-hover.svg) inside;
+		background: url(images/icons/folder-b-arrow.svg) no-repeat scroll left 10px transparent;
+	}
+	.folders>li:nth-child(2)>span{
+		color: #ffffff;
+	}
+
+	.folders>li>span{
+		margin-left: 3px;
+	}
+
+	.files>li{
+		padding-left: 20px;
+		line-height: 28px;
+		list-style: url(images/icons/file.svg) inside;
+	}
+	.files>li>span{
+		margin-left: 2px;
+		vertical-align: top;
+	}
+	.files>li:nth-child(1){
+		list-style: url(images/icons/file-hover.svg) inside;	
+	}
+	.files>li:nth-child(1)>span{
+		color: #ffffff;
 	}
 
 	/*页面主要内容*/
@@ -170,16 +295,26 @@
 	.sel-wrap{
 		display: inline-block;
 		border:1px solid #c8c9c9;
-		padding-right: 12px;
-		padding-left: 12px;
+/*		padding-right: 12px;
+		padding-left: 12px;*/
 		height: 24px;
 		line-height: 24px;
+		cursor: pointer;
+		position: relative;
+		background-color: transparent;
+	}
+
+	.sel-wrap embed{
+		position: absolute;
+		right: 8px;
+		top: 10px;
 		cursor: pointer;
 	}
 
 	.sel{
-		cursor: pointer;
-		background: url(images/icons/sel-arrow.svg) no-repeat scroll right center transparent;				
+		padding-right: 12px;
+		padding-left: 12px;
+		cursor: pointer;			
 	}	
 
 	.select-to-search-p1{
@@ -187,11 +322,10 @@
 	}
 
 	.items-sel{
-		width: 59px;
-		background: url(images/icons/sel-blue-arrow.svg) no-repeat scroll right center transparent;
+		width: 83px;
 	}
 
-	.sel-wrap option{
+	.sel-wrap select option{
 		background-color: #eeeeee;
 	}
 
@@ -202,7 +336,7 @@
 
 	.buyer-sel,
 	.seller-sel{
-		width: 97px;
+		width: 121px;
 	}
 
 	.buyer{
@@ -224,6 +358,7 @@
 		top: 10px;
 		left: 15px;
 		color: #ffffff;
+		cursor: pointer;
 	}
 
 	.select-to-search-p3{
@@ -244,12 +379,12 @@
 		border:1px solid #c8c9c9;
 	}
 	.select-to-search-p3 .items-num-sel{
-		width: 98px;
+		width: 122px;
 	}
 
 	.select-to-search-p3 .people-num-sel,
 	.select-to-search-p3 .all-time-sel{
-		width: 46px;
+		width: 70px;
 	}
 
 	.select-to-search-p3 .people-num,
@@ -309,6 +444,7 @@
 	}
 
 	.history ul li{
+		cursor: pointer;
 		border-top: 3px solid #ffffff;
 		width: 111px;
 		margin-right: 4px;
@@ -364,6 +500,7 @@
 		height: 100%;
 	}
 	.count-items ul li{
+		cursor: pointer;
 		vertical-align: top;
 		display: inline-block;
 		width: 200px;
@@ -459,7 +596,7 @@
 		border-bottom-right-radius: .7em;	
 	}
 
-	.win-box div p{
+	.win-box>div>p{
 		margin-left: 21px;
 		color: #aaaaaa;
 		line-height: 41px;
@@ -546,6 +683,13 @@
 		top: 28px;
 		left: -200%;
 	}
+
+	.win-box-a div .table-wrap table td{
+		width: 102px;
+		height: 31px;
+		line-height: 31px;
+		text-align: center;
+	}
 	.win-box-a div .table-wrap table.table-on{
 		left: 7.7%;
 	}
@@ -563,11 +707,72 @@
 		}
 	}*/
 
-	.win-box-a div .table-wrap table td{
-		width: 102px;
-		height: 31px;
-		line-height: 31px;
-		text-align: center;
+	/*项目摘要*/
+	.win-box .project-re div{
+		line-height: 22px;
+	}
+
+
+	.win-box .project-re div span:first-child,
+	.win-box .project-re .project-re-e span{
+		color: #aaaaaa;
+	}
+
+
+
+	/*线的设置*/
+	.win-box .project-re div{
+		margin-left: 35px;
+		padding-left: 15px;
+	}
+	.project-re{
+		padding-top: 15px;
+	}
+
+	.project-re-a{
+		width: 270px;
+		border-bottom: 1px solid #c8c9c9;
+		padding-bottom: 5px;
+	}
+
+	.project-re-b,
+	.project-re-c{
+		display: inline-block;
+		padding-bottom: 5px;
+	}
+
+	.project-re-b{
+		border-right: 1px solid #c8c9c9;
+		width: 70px;
+	}
+
+	.project-re-d{
+		padding-top: 5px;
+		box-sizing: border-box;
+		padding-right: 10px;
+		width: 316px;
+		height: 145px;
+		border-top: 1px solid #c8c9c9;
+	}
+
+	.project-re-e{
+		padding-top: 5px;
+		width: 270px;
+		border-top: 1px solid #c8c9c9;
+		padding-left: 2px;
+	}
+
+	.project-re-e button{
+		float: right;
+		width: 51px;
+		height: 26px; 
+		border-radius: 2px;
+		background-color: #388ac1;
+		color: #ffffff;
+	}	
+
+	.project-re-e button:hover{
+		background-color: #db3e3e;
 	}
 
 
@@ -576,4 +781,204 @@
 		margin-top: 9px;
 	}
 
+	.car-rank{
+		padding-top: 18px;
+	}
 
+	.car-rank table,
+	.car-rank table tr,
+	.car-rank table td,
+	.car-rank table th{
+		border-collapse: collapse;
+		border:1px solid #c8c9c9;
+	}
+
+	.car-rank table{
+		background-color: #ffffff;
+		margin: 0 auto;
+	}
+
+	.car-rank table td,
+	.car-rank table th{
+		height: 24px;
+		line-height: 24px;
+		text-align: center;
+	}
+
+	.car-rank table td:nth-child(1),
+	.car-rank table th:nth-child(1){
+		width: 68px;
+	}
+
+	.car-rank table td:nth-child(2),
+	.car-rank table th:nth-child(2){
+		width: 90px;
+	}
+	.car-rank table td:nth-child(3),
+	.car-rank table th:nth-child(3){
+		width: 90px;
+		border-right: none;
+	}
+	.car-rank table td:nth-child(4),
+	.car-rank table th:nth-child(4){
+		width: 200px;
+		border-left: none;
+	}
+
+	.car-rank table td div{
+		width: 168px;
+		height: 5px;
+		background-color: #c8c9c9;
+	}
+	.car-rank table td div div{
+		height: 100%;
+		background-color: #7ecaf0;
+	}
+
+	.car-rank table tr:nth-child(2)  td:nth-child(4) div div{
+		background-color: #ec6d51;	
+		width: 150px;
+	}
+
+	.car-rank table tr:nth-child(3)  td:nth-child(4) div div{
+		background-color: #ef8150;	
+		width: 140px;
+	}
+	.car-rank table tr:nth-child(4)  td:nth-child(4) div div{
+		background-color: #f19e4f;
+		width: 130px;	
+	}
+	.car-rank table tr:nth-child(5)  td:nth-child(4) div div{
+		width: 110px;	
+	}
+	.car-rank table tr:nth-child(6)  td:nth-child(4) div div{
+		width: 100px;	
+	}
+	.car-rank table tr:nth-child(7)  td:nth-child(4) div div{
+		width: 80px;	
+	}
+	.car-rank table tr:nth-child(8)  td:nth-child(4) div div{
+		width: 60px;	
+	}
+	.car-rank table tr:nth-child(9)  td:nth-child(4) div div{
+		width: 40px;	
+	}
+	.car-rank table tr:nth-child(10) td:nth-child(4) div div{
+		width: 20px;	
+	}
+	.car-rank table tr:nth-child(11) td:nth-child(4) div div{
+		width: 20px;	
+	}
+
+	.car-rank table tr:nth-child(1):hover{
+		background-color: #ffffff;
+	}
+
+	.car-rank table tr:hover{
+		background-color: #f4f6f7;
+	}
+
+	.date-mark{
+		padding-top: 11px;
+		font-family: "黑体" !important;
+	} 
+
+	.date-mark article{
+		width: 308px;
+		margin: 0 auto;
+	}
+
+	.date-mark-sel>div{
+		cursor: pointer;
+		display: inline-block;
+		font-size: 0;
+		border: 1px solid #c8c9c9;
+		height: 22px;
+	}
+
+	.date-mark-sel div span{
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 12px;
+		text-align: center;
+		line-height: 22px;
+	}
+	.date-mark-sel .year span{
+		width: 44px;
+	}
+	.date-mark-sel .month span{
+		width: 65px;
+	}
+	.date-mark-sel .day span{
+		width: 54px;
+	}
+	.date-mark-sel .today span{
+		width: 62px;
+	}
+
+	/*选择箭头*/
+	.date-mark-sel div .date-arrow{
+		display: inline-block;
+		height: 20px;
+		width: 20px;
+		border-left: 1px solid #eeeeee;
+		background: url(images/icons/date.arrow.svg) no-repeat scroll center transparent;
+		vertical-align: middle;
+	}
+
+	.date-mark-weekday p{
+		width: 308px;
+		margin:8px auto;
+		font-size: 0;
+		padding: 5px 0;
+		border-top: 2px solid #a9cfec;
+		border-bottom: 2px solid #c8c9c9;
+
+	}
+	.date-mark-weekday p span{
+		font-size: 12px;
+		color: #323333;
+		display: inline-block;
+		width: 44px;
+		text-align: center;
+	}
+	.date-mark-days table,
+	.date-mark-days table tr,
+	.date-mark-days table td,
+	.date-mark-days table th{
+		border-collapse: collapse;
+		border: 1px inset rgba(244,194,29,0);/*表格要hover是显示完整边框线要这样设置*/
+	}
+
+	.date-mark-days table td:hover,
+	.date-mark-days table th:hover{
+		cursor: pointer;
+		border: 1px solid rgba(244,194,29,1);
+	}
+	.date-mark-days table tr:nth-child(2) td:nth-child(6),
+	.date-mark-days table tr:nth-child(3) td:nth-child(2),
+	.date-mark-days table tr:nth-child(4) td:nth-child(2){
+		border: 1px solid rgba(244,194,29,1);	
+	}
+
+
+	.date-mark-days table{
+		margin: 0 auto;
+	}
+
+	.date-mark-days table td,
+	.date-mark-days table th{
+		font-size: 11px !important;
+		width: 44px;
+		height: 40px;
+		line-height: 15px;
+		text-align: center;
+	}
+
+	.date-mark-days table tr td:nth-child(6) span:nth-child(1),
+	.date-mark-days table tr td:nth-child(7) span:nth-child(1),
+	.date-mark-days table tr:nth-child(1) td:nth-child(5) span:nth-child(3),
+	.date-mark-days table tr:nth-child(2) td:nth-child(2) span:nth-child(3){
+		color: #c9161d;
+	}
+	

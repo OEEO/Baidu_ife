@@ -30,13 +30,52 @@
         <!-- 左边侧栏 -->
             <aside id="aside">
                 <!-- 侧栏顶部 -->
-                <article>
-                    
+                <article class="aside-head">
+                    <section>
+                        <div class="aside-avatar"><embed src="images/icons/aside-avatar.svg"></embed></div>
+                        <span>夏尔波德莱尔</span>
+                    </section>
+                    <section>
+                        <div class="aside-head-collect">
+                            <span>111</span><br>
+                            <span>收藏</span>
+                        </div>
+                        <div class="aside-head-fans">
+                            <span>111</span><br>
+                            <span>粉丝</span>
+                        </div>
+                    </section>
                 </article>
                 <!-- 侧栏下方列表 -->
-                <article>
-                    <ul>
-                        <li></li>
+                <article class="aside-lists">
+                    <ul class="lists">
+                        <li>
+                            <span>个人报表</span>
+                            <ul class="folders">
+                                <li>
+                                    <span>文件一</span>
+                                </li>
+                                <li>
+                                    <span>文件二</span>
+                                    <ul class="files">
+                                        <li>
+                                            <span>文档一</span>
+                                        </li>
+                                        <li>
+                                            <span>文档二</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <span>文件三</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><span>个人收藏</span></li>
+                        <li><span>我的分享</span></li>
+                        <li><span>图库</span></li>
+                        <li><span>成长记录</span></li>
+                        <li><span>帐户信息</span></li>
                     </ul>
                 </article>
             </aside>
@@ -53,6 +92,7 @@
                         <section class="select-to-search-p1">
                             <span>查询项</span>
                             <div class="sel-wrap">
+                                <embed src="images/icons/sel-blue-arrow.svg"></embed>
                                 <select class="items-sel sel">
                                     <option>第一项</option>
                                     <option>第二项</option>
@@ -67,6 +107,7 @@
                             <div class="buyer">
                                 <span>买方</span>
                                 <div class="sel-wrap">
+                                    <embed src="images/icons/sel-arrow.svg"></embed>
                                     <select class="buyer-sel sel">
                                         <option>张三</option>
                                         <option>李四</option>
@@ -77,6 +118,7 @@
                             <div class="seller">
                                 <span>买方</span>
                                 <div class="sel-wrap">
+                                    <embed src="images/icons/sel-arrow.svg"></embed>
                                     <select class="seller-sel sel">
                                         <option>Dean</option>
                                         <option>Ayn</option>
@@ -95,6 +137,7 @@
                             <div class="all-time">
                                 <span>总耗时</span>
                                 <div class="sel-wrap">
+                                    <embed src="images/icons/sel-arrow.svg"></embed>
                                     <select class="all-time-sel sel">
                                         <option>10天</option>
                                         <option>100天</option>
@@ -106,6 +149,7 @@
                             <div class="people-num">
                                 <span>人数</span>
                                 <div class="sel-wrap">
+                                    <embed src="images/icons/sel-arrow.svg"></embed>
                                     <select class="people-num-sel sel">
                                         <option>10</option>
                                         <option>100</option>
@@ -117,6 +161,7 @@
                             <div class="items-num">
                                 <span>成交项</span>
                                 <div class="sel-wrap">
+                                    <embed src="images/icons/sel-arrow.svg"></embed>
                                     <select class="items-num-sel sel">
                                         <option>10 项</option>
                                         <option>20 项</option>
@@ -431,11 +476,21 @@
                             <div class="win-box" style="width: 351px;">
                                 <!-- 框标题 -->
                                 <div>
-                                      <p>第一组项目</p>    
+                                    <p>第一组项目</p>    
                                 </div>
                                 <!-- 框内容 -->
-                                <div>
-                                    
+                                <div class="project-re">
+                                    <div class="project-re-a"><span>标题</span><br/><span>项目报表三</span></div>
+                                    <div class="project-re-b"><span>价格</span><br/><span>￥158</span></div>   
+                                    <div class="project-re-c"><span>负责人</span><br/><span>小A</span></div>   
+                                    <div class="project-re-d"><span>详细描述</span><br/>
+                                    <span>该项目目前的负责该项目目前的负责人该项目目前的负责人该项目目前的负责人该项目目前的负责人</span>
+                                    </div>
+                                    <div class="project-re-e chear-float">
+                                        <input type="checkbox" name="" checked="checked">
+                                        <span>遵守保密协议</span>
+                                        <button>提交</button>
+                                    </div>   
                                 </div>
                             </div>
                         </section>
@@ -451,8 +506,194 @@
                                     <p>日历</p>      
                                 </div>
                                 <!-- 框内容 -->
-                                <div>
-                                    
+                                <div class="date-mark">
+                                    <article>
+                                        <!-- 选择日期 -->
+                                        <section class="date-mark-sel">
+                                            <div class="year">
+                                                <span>2016年</span>
+                                                <div class="date-arrow"></div>
+                                            </div>
+                                            <div class="month">
+                                                <span>2016年</span>
+                                                <div class="date-arrow"></div>
+                                            </div>
+                                            <div class="day">
+                                                <span>2016年</span>
+                                                <div class="date-arrow"></div>
+                                            </div>
+                                            <div class="today">
+                                                <span>返回今天</span>
+                                            </div>
+                                        </section>
+                                        <!-- 星期几 -->
+                                        <section class="date-mark-weekday">
+                                            <p>
+                                                <span>一</span>
+                                                <span>二</span>
+                                                <span>三</span>
+                                                <span>四</span>
+                                                <span>五</span>
+                                                <span>六</span>
+                                                <span>日</span>
+                                            </p>
+                                        </section>
+                                        <!-- 具体日期 -->
+                                        <section class="date-mark-days">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <span></span><br>
+                                                        <span></span>
+                                                    </td>
+                                                    <td>
+                                                        <span></span><br>
+                                                        <span></span>
+                                                    </td>
+                                                    <td>
+                                                        <span></span><br>
+                                                        <span></span>
+                                                    </td>
+                                                    <td>
+                                                        <span></span><br>
+                                                        <span></span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>愚人节</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>2</span><br>
+                                                        <span>廿五</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>3</span><br>
+                                                        <span>廿六</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>4</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>5</span><br>
+                                                        <span>清明</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>1</span><br>
+                                                        <span>廿七</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </section>
+                                    </article>
                                 </div>
                             </div>
                             <!-- 框宽度及角控制 -->
@@ -460,11 +701,118 @@
                             <div class="win-box">
                                 <!-- 框标题 -->
                                 <div>
-                                    <p>汽车品牌榜</p>      
+                                    <p>交通工具销售榜</p>      
                                 </div>
                                 <!-- 框内容 -->
-                                <div>
-                                    
+                                <div class="car-rank">
+                                    <table>
+                                        <tr>
+                                            <th>排名</th>
+                                            <th>品牌</th>
+                                            <th>搜索指数</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>兰博基尼</td>
+                                            <td>22222222</td>
+                                            <td>
+                                                <div>
+                                                    <div></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>法拉利</td>
+                                            <td>22222222</td>
+                                            <td>
+                                                <div>
+                                                    <div></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>保时捷</td>
+                                            <td>22222222</td>
+                                            <td>
+                                                <div>
+                                                    <div></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>红旗</td>
+                                            <td>22222222</td>
+                                            <td>
+                                                <div>
+                                                    <div></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>坦克</td>
+                                            <td>22222222</td>
+                                            <td>
+                                                <div>
+                                                    <div></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>飞机</td>
+                                            <td>22222222</td>
+                                            <td>
+                                                <div>
+                                                    <div></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td>大炮</td>
+                                            <td>22222222</td>
+                                            <td>
+                                                <div>
+                                                    <div></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td>火车</td>
+                                            <td>22222222</td>
+                                            <td>
+                                                <div>
+                                                    <div></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td>宇宙飞船</td>
+                                            <td>22222222</td>
+                                            <td>
+                                                <div>
+                                                    <div></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>时空穿梭机</td>
+                                            <td>22222222</td>
+                                            <td>
+                                                <div>
+                                                    <div></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                         </section>
