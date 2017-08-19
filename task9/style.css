@@ -187,18 +187,18 @@
 
 	.lists>li:nth-child(1){
 		height: 201px;
-		list-style: url(images/icons/personalChart.svg) inside;
+		list-style: url(images/icons/personalChart.png) inside;
 	}
 	.lists>li:nth-child(2),
 	.lists>li:nth-child(4),
 	.lists>li:nth-child(5){
-		list-style: url(images/icons/star.svg) inside;
+		list-style: url(images/icons/star.png) inside;
 	}
 	.lists>li:nth-child(3){
-		list-style: url(images/icons/partake.svg) inside;
+		list-style: url(images/icons/partake.png) inside;
 	}
 	.lists>li:nth-child(6){
-		list-style: url(images/icons/accoutInfo.svg) inside;
+		list-style: url(images/icons/accoutInfo.png) inside;
 	}
 
 	.lists>li:hover{
@@ -212,14 +212,14 @@
 
 	.folders>li{
 		line-height: 32px;
-		list-style: url(images/icons/folder.svg) inside;
-		background: url(images/icons/folder-r-arrow.svg) no-repeat scroll left center transparent;
+		list-style: url(images/icons/folder.png) inside;
+		background: url(images/icons/folder-r-arrow.png) no-repeat scroll left center transparent;
 		padding-left: 20px;
 		margin-left: 28px;
 	}
 	.folders>li:nth-child(2){
-		list-style: url(images/icons/folder-hover.svg) inside;
-		background: url(images/icons/folder-b-arrow.svg) no-repeat scroll left 10px transparent;
+		list-style: url(images/icons/folder-hover.png) inside;
+		background: url(images/icons/folder-b-arrow.png) no-repeat scroll left 10px transparent;
 	}
 	.folders>li:nth-child(2)>span{
 		color: #ffffff;
@@ -232,14 +232,14 @@
 	.files>li{
 		padding-left: 20px;
 		line-height: 28px;
-		list-style: url(images/icons/file.svg) inside;
+		list-style: url(images/icons/file.png) inside;
 	}
 	.files>li>span{
 		margin-left: 2px;
 		vertical-align: top;
 	}
 	.files>li:nth-child(1){
-		list-style: url(images/icons/file-hover.svg) inside;	
+		list-style: url(images/icons/file-hover.png) inside;	
 	}
 	.files>li:nth-child(1)>span{
 		color: #ffffff;
