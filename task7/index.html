@@ -29,7 +29,8 @@
 			</li>
 			<li>
 				<a href="#">关于我们</a>
-			</li>				
+			</li>	
+            <li class="line"></li>			
 		</ul>
 	</header>
     <div class="width1280">	
@@ -66,35 +67,47 @@
     		<div class="line"></div>
     		<p>每个城市的不同的活动信息，请自主查询你所需要了解的城市</p>
     	</div>	
-    	<form>
-    		<div>
-    		    <select class="country">
-    			<option>中国</option>
-    			<option>日本</option>
-    			<option>意大利</option>
-    			<option>美国</option>
-    		    </select>
-    		</div>
-    		
-    		<div>    		
-    		    <select class="province">
-    			<option>广东省</option>
-    			<option>湖南省</option>
-    			<option>湖北省</option>
-    			<option>福建省</option>
-    		    </select>
-    		</div>
-    		
-    		<div>      		
-    		    <select class="city">
-    			<option>北京</option>
-    			<option>上海</option>
-    			<option>广州</option>
-    			<option>深圳</option>
-    		    </select>
+    	<div class="address">
+            <input type="radio" name="city">
+            <input type="radio" name="city">
+            <input type="radio" name="city">
+    		<div class="sels">
+    		    <div class="country sel">
+                    <span>国家</span>
+                    <div class="option">
+                        <ul>
+                            <li>中国</li>
+                            <li>日本</li>
+                            <li>意大利</li>
+                            <li>美国</li>                        
+                        </ul>
+    		       </div>
+                </div>   		
+    		    <div class="province sel">
+                    <span>省份</span>
+                    <div class="option">
+                        <ul>
+                			<li>广东省</li>
+                			<li>湖南省</li>
+                			<li>湖北省</li>
+                			<li>福建省</li>
+            		    </ul>
+                    </div>     		
+                </div>
+    		    <div class="city sel">
+                    <span>城市</span>
+                    <div class="option">
+                        <ul>
+                			<li>北京</li>
+                			<li>上海</li>
+                			<li>广州</li>
+                			<li>深圳</li>
+            		    </ul>
+                    </div>
+                </div>
     		</div>
     		<input type="submit" value="搜    索">
-    	</form>
+    	</div>
     	</div>
     </div>
     
