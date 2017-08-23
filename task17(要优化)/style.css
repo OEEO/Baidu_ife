@@ -1,0 +1,132 @@
+		*{
+			padding: 0;
+			margin: 0;
+		}
+        
+        #form-gra-time{
+        	width: 1200px;
+        	height: 100px;
+        	border: 2px #888888 solid;
+        	border-radius: 30px;
+        	text-align: center;
+            margin: 50px auto;
+            font-size: 0;
+        }
+
+        #form-gra-time>div{
+        	display: inline-block;
+        }
+        #date{
+            margin-top: -25px;
+        }
+        #date span{
+            border:none;
+            margin-right: 10px;
+            font-family: "微软雅黑";
+        	font-size: 16px;
+        	display: inline-block;
+        	width: 50px;
+        	height: 50px;
+        	border-radius: 50%;
+        	background-color: #555555;
+        	color: #ffffff;
+        	text-align: center;
+        	line-height: 50px;
+        	transition: background-color 200ms;
+            cursor: pointer;
+        }
+
+        #date input[type = "radio"]:nth-of-type(1):checked ~ div span:nth-of-type(1){
+            background-color: #db3e3e;
+        }
+        #date input[type = "radio"]:nth-of-type(2):checked ~ div span:nth-of-type(2){
+            background-color: #db3e3e;
+        }
+        #date input[type = "radio"]:nth-of-type(3):checked ~ div span:nth-of-type(3){
+        	background-color: #db3e3e;
+        }
+
+        #date input[type = "radio"]{
+            position: relative;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            display: inline-block;
+            border-radius: 50%;
+            left:0; 
+            top: 50px;
+        	opacity: 0;
+            cursor: pointer;
+        }
+
+        #city{
+            margin-left: 50px;  
+        } 
+
+        #city select{
+        	width: 100px;
+        	height: 30px;
+        	line-height: 30px;
+        	background-color: #EEEEEE;
+        	appearance:none;
+        	-moz-appearance:none;
+        	-webkit-appearance:none;
+        	border: none;
+            box-shadow: 1px 1px 2px 1px inset;
+        	text-align: center;
+        }
+
+        #city select option{
+    		text-align: center;
+        }
+
+        #aqi-chart-wrap{
+            box-sizing: border-box;
+        	width: 1200px;
+        	border-radius: 30px;
+        	border: 2px #888888 solid;
+        	margin: 0 auto;
+        	vertical-align: top;
+            overflow: hidden;
+        }
+
+        #aqi-chart-wrap p{
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #aqi-chart{
+            width: 100%;
+            text-align: center;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        #aqi-chart span{
+        	display: inline-block;
+            height: 600px;
+            width: 1px;
+            margin-right: -1px; 
+        }
+
+        #aqi-chart div{
+        	background-color: #db3e3e;
+        	display: inline-block;
+            transition: height 500ms; 
+        }
+
+        #aqi-chart div.day{
+            width: 7px;
+            margin-left: 5px;
+        }
+        #aqi-chart div.week{
+            width: 40px;
+            margin-left: 30px;
+        }
+        #aqi-chart div.month{
+            width: 230px;
+            margin-left: 140px;
+        }
+        #aqi-chart div:first-of-type{
+            margin-left: 0 !important;
+        }
