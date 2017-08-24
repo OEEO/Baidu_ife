@@ -59,8 +59,6 @@
     * 渲染图表
     */
     function renderChart() {
-
-
         var citySel = $('#city').getElementsByTagName('select')[0];
         var cityName = citySel.value;
         function getArrNow(){
@@ -99,24 +97,44 @@
         var divClass = pageState.nowGraTime;
         var aqiChart = $('#aqi-chart');
         var inputs = $('#date').getElementsByTagName('input');
-        for (var i = 0; i < inputs.length; i++) {
-            inputs[i].onclick = function(){
-                pageState.nowGraTime = this.id;
-                renderChart();
-            }
-        }
-
         var str = '<span></span>';
         for(var i = 0; i < arrNow.length; i++){
             str += '<div style="height:' + 0 +'px;" class="' + divClass +  '"></div>';
         };
-        $('#aqi-chart').innerHTML = str;
         var div = $('#aqi-chart').getElementsByTagName('div');
+        $('#aqi-chart').innerHTML = str;
+
+        for (var i = 0; i < div.length; i++) {
+            div[i].style.height = Number(arrNow[i]) + 'px';
+        }    
 
 
-            for (var i = 0; i < div.length; i++) {
-                div[i].style.height = Number(arrNow[i]) + 'px';
-            }    
+
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].onclick = function(){
+                pageState.nowGraTime = this.id;
+                var arrNow = getArrNow();
+                var divClass = pageState.nowGraTime;
+                var str = '<span></span>';
+                for(var i = 0; i < arrNow.length; i++){
+                    str += '<div style="height:' + 0 +'px;" class="' + divClass +  '"></div>';
+                };
+
+                var div = $('#aqi-chart').getElementsByTagName('div');
+                $('#aqi-chart').innerHTML = str;
+                setTimeout(function(){
+                    for (var i = 0; i < div.length; i++) {
+                        div[i].style.height = Number(arrNow[i]) + 'px';
+                    }                       
+                },50);
+                }  
+            }
+        
+
+
+
+
+
         citySel.onchange = function(){
             var div = $('#aqi-chart').getElementsByTagName('div');
             var cityName = citySel.value;
