@@ -1,0 +1,88 @@
+<!DOCTYPE>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>task20</title>
+</head>
+    <style type="text/css">
+    	*{
+    		padding: 0;
+    		margin: 0;
+    	}
+        body{
+        	margin-top: 50px;
+            margin-left: 50px;
+        }
+
+        #control button{
+        	width: 80px;
+        	height: 25px;
+        	border: none;
+        	border-radius: 25px;
+        	background-color: #4DC0F9;
+        	color: #FFFFFF;
+        	cursor: pointer;
+        }
+
+        #control button:hover,#control button:active{
+        	background-color: #E83C3C;
+        	cursor: pointer;
+        }
+
+        #box{
+        	margin-top: 50px;
+        	background-color: #EEEEEE;
+        }
+
+    	#box div,
+        #tag div{
+    		display: inline-block;
+    		padding: 0 10px;
+    		height: 40px;
+    		line-height: 40px;
+    		text-align: center;
+    		background-color: #580094;
+    		margin-right: 10px;
+    		margin-bottom: 20px;
+    		float: left;
+    		color: #FFFFFF;
+    	}
+
+    	#box div:hover,#box div:active,
+        #tag div:hover,#tag div:active{
+    		background-color: #E83C3C;
+    		cursor: pointer;
+    	}    	
+
+        #first{
+            margin-bottom: 200px;
+        }
+        #tag{
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+    </style>
+<body>
+
+    <div id="first">
+        <input type="text" name="" id="single">
+        <div id="tag">
+            
+        </div>    
+    </div>
+
+    <div id="main">
+        <div id="control">
+        	<textarea id="str"></textarea>
+        	<button id="input">输入</button>
+        	<input type="text" name="" id="search-text">
+        	<button id="search">搜索</button>
+        </div>
+    	<div id="box">
+
+    	</div>    	
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
