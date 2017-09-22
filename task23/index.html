@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>task23</title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+	body{
+		font-size: 14px;
+		width: 100%;
+		text-align: center;
+	}
+	section{
+		margin-top: 10px;
+	}
+	div#binaryTree{
+		margin: 0 auto;
+		margin-top: 100px;
+		position:static;
+		display: block;
+		width: 90%;
+		height: 300px
+	}
+
+	div{
+		position: relative;
+		display: inline-block;
+		height: 70%;
+		border: 2px solid #aa121a;
+		top: 10%;
+		transition: 0.2s linear;
+		background-color: white;
+		margin: 10px;
+		padding: 5px;
+		vertical-align: top;
+	}
+
+	#buttons button.red,
+	.red{
+		background-color: #cc551a;
+	}
+	#buttons{
+		margin-top: 20px;
+	}
+	#buttons button{
+		outline: 0;
+		cursor: pointer;
+		font-size: 16px;
+		color: white;
+		margin-right: 20px;
+		border: none;
+		box-shadow: none;
+		border-radius: 10px;
+		padding: 10px 20px;
+		background-color: #21d1aa;
+	}
+
+	#buttons button:hover{
+		background-color: #cc551a;
+	}
+
+	.cyan{
+		background-color: #21d1aa;
+	}
+
+	#search{
+		border:1px solid #ccc;
+		padding-left: 5px;
+		width: 200px;
+		height: 20px;
+		line-height: 20px;
+	}
+	section:nth-child(2){
+		text-align: left;
+		margin-left: 790px;
+	}
+	#search + span{
+		color: red;
+		display: none;
+	}
+
+	#search + span.block{
+		display: inline-block;
+	}
+</style>
+
+</head>
+
+<body>
+<section>
+	<div id="binaryTree">super
+		<div>cat
+			<div>Apple
+				<div>pear</div>
+				<div>pig</div>
+				<div>cola</div>
+				<div>occen</div>
+			</div>
+			<div>phone</div>
+			<div>
+				<div>book</div>
+				<div>clock</div>
+			</div>
+		</div>
+		<div>note
+			<div>human
+				<div>code</div>
+				<div>op</div>
+				<div>man</div>
+			</div>
+			<div>glass
+				<div>bear
+					<div>god</div>
+				</div>
+				<div>grass</div>
+			</div>
+		</div>
+		<div>fish</div>
+	</div>
+</section>
+<section>
+	<label for="search">请输要要查找的数据</label>
+	<input type="text" id="search">
+	<span>*输入框不能为空</span>
+</section>
+
+<section id="buttons">
+	<button id="preOrder">前序遍历</button>
+	<button id="postOrder">后序遍历</button>
+</section>
+	<script type="text/javascript">
+		$ = function(el) {
+			if (el.slice(0,1) === '#' && el.match(/\s/) === null) {
+				return document.querySelector(el);
+			} else {
+				return document.querySelectorAll(el);
+			}
+		}
+
+		//定时器
+		var timer = null;
+		 //可视化遍历树函数，el根元素，lists列表，style遍历方式
+		var traverseTree = function(el, lists, style) {
+			var search = $('#search');
+			search.style.border = '1px solid #ccc';
+			search.nextElementSibling.className = '';
+			var value = search.value.trim();
+			if (value === '') {
+				search.style.border = '1px solid red';
+				lists.forEach(function(key) {
+					key.className = '';
+				});
+				search.nextElementSibling.className = 'block';
+				clearInterval(timer);
+				return;
+			}
+			var arr = [];
+			if (timer !== null) {
+				clearInterval(timer);
+				lists.forEach(function(key) {
+					key.className = '';
+				});
+			}
+			var preOrder = function(elem) {
+				if (elem) {
+					arr.push(elem);
+					for (var i = 0; i < elem.children.length; i++) {
+						preOrder(elem.children[i], lists);
+					}
+				}
+			}
+
+			var postOrder = function(elem) {
+				if (elem) {
+					for (var i = 0; i < elem.children.length; i++) {
+						postOrder(elem.children[i], lists);
+					}
+					arr.push(elem);
+				}
+			}
+			//二叉树的遍历方式
+			if (style === 'preOrder') {
+				preOrder(el);
+			} else {
+				postOrder(el);
+			}
+			if (arr[0].childNodes[0].nodeValue.trim() === value) {
+				arr[0].className = 'red';
+				return;
+			}
+			arr[0].className = 'cyan';
+			var i = 1;
+			var changeColor = function() {
+				//去除上一项的背景cyan
+				arr[i - 1].className = '';
+				if (!arr[i]) {
+					clearInterval(timer);
+					alert('Can not find the value');
+					return;
+				}
+				if (arr[i].childNodes[0].nodeValue.trim() === value) {
+					arr[i].className = 'red';
+					clearInterval(timer);
+					return;
+				}
+				//为当前项添加背景色cyan
+				arr[i].className = 'cyan';
+				i = i + 1;
+			}
+			timer = setInterval(changeColor,500);
+		}
+
+		var binaryTree = $('#binaryTree');
+		var div = $('div');
+		var buttons = $('#buttons');
+		//给button绑定事件
+		buttons.addEventListener('click',function(event) {
+			//去除button的cyan类，给按下的button添加cyan背景颜色
+			if (event.target.nodeName === 'BUTTON') {
+				[].forEach.call(this.children, function(key) {
+					key.className = '';
+				});
+				event.target.className = 'red';
+				traverseTree(binaryTree, div, event.target.id);
+			}
+		})
+	</script>
+</body>
+</html>
