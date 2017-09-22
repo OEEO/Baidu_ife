@@ -187,6 +187,7 @@
 				//去除上一项的背景cyan
 				arr[i - 1].className = arr[i - 1].className.replace(/cyan/, '');
 				if (!arr[i]) {
+					clearInterval(timer);
 					return;
 				}
 				//为当前项添加背景色cyan
