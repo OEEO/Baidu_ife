@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>task22</title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+	body{
+		font-size: 0;
+		width: 100%;
+		height: 600px;
+		text-align: center;
+	}
+
+	div{
+		color: yellow;
+		position: relative;
+		display: inline-block;
+		width: 40%;
+		height: 70%;
+		border: 2px solid #aa121a;
+		text-align: center;
+		top: 14%;
+		transition: 0.2s linear;
+		background-color: white;
+	}
+
+	div>:first-child{
+		margin-right: 6%;
+	}
+
+	body>div{
+		margin: 0 auto;
+		margin-top: 100px;
+		position:static;
+		display: block;
+		width: 90%;
+	}
+
+	#buttons{
+		margin-top: 20px;
+	}
+	#buttons button{
+		cursor: pointer;
+		font-size: 16px;
+		color: white;
+		margin-right: 20px;
+		border: none;
+		box-shadow: none;
+		border-radius: 10px;
+		padding: 10px 20px;
+		background-color: #aa121a;
+	}
+
+	#buttons button:hover{
+		background-color: #21d1aa;
+	}
+
+	.cyan,
+	#buttons button.cyan{
+		background-color: #21d1aa;
+	}
+	#noticeText{
+		display: block;
+		font-size: 70px;
+		position: absolute;
+		color: red;
+		margin-left: 700px;
+		margin-top: 100px;
+	}
+</style>
+
+</head>
+
+<body>
+<div id="binaryTree">
+	<div>
+		<div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</div>
+</div>
+<section id="buttons">
+	<button id="preOrder">前序遍历</button>
+	<button id="inOrder">中序遍历</button>
+	<button id="postOrder">后序遍历</button>
+</section>
+	<script type="text/javascript">
+		$ = function(el) {
+			if (el.slice(0,1) === '#' && el.match(/\s/) === null) {
+				return document.querySelector(el);
+			} else {
+				return document.querySelectorAll(el);
+			}
+		}
+
+		//定时器
+		var timer = null;
+		 //可视化遍历树函数，el根元素，lists列表，style遍历方式
+		var traverseTree = function(el, lists, style) {
+			var arr = [];
+			if (timer !== null) {
+				clearInterval(timer);
+				lists.forEach(function(key) {
+					key.className = key.className.replace(/cyan/,'');
+				});
+			}
+			var preOrder = function(elem) {
+				if (elem) {
+					arr.push(elem);
+					preOrder(elem.children[0], lists);
+					preOrder(elem.children[1], lists);
+				}
+			}
+			var inOrder = function(elem) {
+				if (elem) {
+					inOrder(elem.children[0], lists);
+					arr.push(elem);
+					inOrder(elem.children[1], lists);
+				}
+			}
+			var postOrder = function(elem) {
+				if (elem) {
+					postOrder(elem.children[0], lists);
+					postOrder(elem.children[1], lists);
+					arr.push(elem);
+				}
+			}
+			//二叉树的遍历方式
+			switch (style) {
+				case 'preOrder':
+					preOrder(el);
+					break;
+				case 'inOrder':
+					inOrder(el);
+					break;
+				default:
+					postOrder(el);
+					break;
+			}
+			arr[0].className = 'cyan';
+			var i = 1;
+			var changeColor = function() {
+				//去除上一项的背景cyan
+				arr[i - 1].className = arr[i - 1].className.replace(/cyan/, '');
+				if (!arr[i]) {
+					return;
+				}
+				//为当前项添加背景色cyan
+				arr[i].className = 'cyan';
+				i = i + 1;
+			}
+			timer = setInterval(changeColor,500);
+		}
+
+		var binaryTree = $('#binaryTree');
+		var div = $('div');
+		var buttons = $('#buttons');
+		//给button绑定事件
+		buttons.addEventListener('click',function(event) {
+			//去除button的cyan类，给按下的button添加cyan背景颜色
+			[].forEach.call(this.children, function(key) {
+				key.className = key.className.replace(/cyan/, '');
+			});
+			event.target.className += ' cyan';
+			traverseTree(binaryTree, div, event.target.id);
+		})
+	</script>
+</body>
+</html>
