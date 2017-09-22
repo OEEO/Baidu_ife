@@ -202,11 +202,13 @@
 		//给button绑定事件
 		buttons.addEventListener('click',function(event) {
 			//去除button的cyan类，给按下的button添加cyan背景颜色
-			[].forEach.call(this.children, function(key) {
-				key.className = key.className.replace(/cyan/, '');
-			});
-			event.target.className += ' cyan';
-			traverseTree(binaryTree, div, event.target.id);
+			if (event.target.nodeName === 'BUTTON') {
+				[].forEach.call(this.children, function(key) {
+					key.className = key.className.replace(/cyan/, '');
+				});
+				event.target.className += ' cyan';
+				traverseTree(binaryTree, div, event.target.id);
+			}
 		})
 	</script>
 </body>
