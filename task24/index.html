@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>task24</title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+	body{
+		font-size: 14px;
+		width: 100%;
+		text-align: center;
+	}
+	section{
+		margin-top: 10px;
+	}
+	section#binaryTree-wrap{
+		margin: 0 auto;
+		width: 1800px;
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
+	div#binaryTree{
+		display: block;
+		height: 500px;
+		width: 90%;
+		margin: 0 auto;
+		margin-top: 20px;
+	}
+
+	div{
+		display: inline-block;
+		height: 70%;
+		border: 2px solid #aa121a;
+		background-color: white;
+		margin: 5px 10px;
+		padding: 5px;
+		vertical-align: top;
+		transition: 0.2s linear;
+	}
+
+	.red{
+		background-color: #cc551a;
+	}
+	#buttons{
+		margin-top: 20px;
+	}
+	#buttons button{
+		outline: 0;
+		cursor: pointer;
+		font-size: 16px;
+		color: white;
+		margin-right: 20px;
+		border: none;
+		box-shadow: none;
+		border-radius: 10px;
+		padding: 10px 20px;
+		background-color: #21d1aa;
+	}
+
+	#buttons button.wine{
+		background-color: #db3e3e;
+	}
+
+	#buttons button:hover{
+		background-color: #db3e3e;
+	}
+
+	.cyan{
+		background-color: #21d1aa;
+	}
+
+	.select{
+		background-color: #12aafe;
+	}
+	input[type = "text"]{
+		border:1px solid #ccc;
+		padding-left: 5px;
+		width: 200px;
+		height: 20px;
+		line-height: 20px;
+	}
+
+</style>
+
+</head>
+
+<body>
+<section id="binaryTree-wrap">
+	<div id="binaryTree">super
+		<div>cat
+			<div>Apple
+				<div>pear</div>
+				<div>pig</div>
+				<div>cola</div>
+				<div>occen</div>
+			</div>
+			<div>phone</div>
+			<div>
+				<div>book</div>
+				<div>clock</div>
+			</div>
+		</div>
+		<div>note
+			<div>human
+				<div>code</div>
+				<div>op</div>
+				<div>man</div>
+			</div>
+			<div>glass
+				<div>bear
+					<div>god</div>
+				</div>
+				<div>grass</div>
+			</div>
+		</div>
+		<div>fish</div>
+	</div>
+</section>
+
+<section>
+
+</section>
+
+<section>
+	<button id="delNode">点击删除选择的节点及其子节点</button>
+	<br/>
+	<br/>
+	<label for="addText">请输入要添加的节点文本内容</label>
+	<input type="text" id="addText">
+	<button id="add">添加</button>
+</section>
+<section>
+	<label for="search">请输要要查找的数据</label>
+	<input type="text" id="search">
+	<input type="radio" name="search-type" value="one" checked="checked" id="search-type-one"><label for="search-type-one">匹配第一个</label>
+	<input type="radio" name="search-type" value="all" id="search-type-all"><label for="search-type-all">匹配所有</label>
+</section>
+
+<section id="buttons">
+	<button id="preOrder">前序遍历</button>
+	<button id="postOrder">后序遍历</button>
+</section>
+	<script type="text/javascript">
+		var $ = function(el) {
+			if (el.slice(0,1) === '#' && el.match(/\s/) === null) {
+				return document.querySelector(el);
+			} else {
+				return document.querySelectorAll(el);
+			}
+		}
+
+		//定时器
+		var timer = null;
+		 //可视化遍历树函数，el根元素，lists列表，style遍历方式
+		var traverseTree = function(el, lists, style) {
+			var search = $('#search');
+			search.style.border = '1px solid #ccc';
+			var value = search.value.trim();
+			if (value === '') {
+				search.style.border = '1px solid red';
+				lists.forEach(function(key) {
+					key.className = '';
+				});
+				clearInterval(timer);
+				return;
+			}
+			var arr = [];
+			if (timer !== null) {
+				clearInterval(timer);
+				lists.forEach(function(key) {
+					key.className = '';
+				});
+			}
+			var preOrder = function(elem) {
+				if (elem) {
+					arr.push(elem);
+					for (var i = 0; i < elem.children.length; i++) {
+						preOrder(elem.children[i], lists);
+					}
+				}
+			}
+
+			var postOrder = function(elem) {
+				if (elem) {
+					for (var i = 0; i < elem.children.length; i++) {
+						postOrder(elem.children[i], lists);
+					}
+					arr.push(elem);
+				}
+			}
+			//二叉树的遍历方式
+			if (style === 'preOrder') {
+				preOrder(el);
+			} else {
+				postOrder(el);
+			}
+			if (arr[0].childNodes[0].nodeValue.trim() === value) {
+				arr[0].className = 'red';
+				return;
+			}
+			arr[0].className = 'cyan';
+			var i = 1;
+			var changeColor = function() {
+				//去除前一项的背景cyan
+				arr[i - 1].className = arr[i - 1].className.replace(/cyan/, '');
+				if (!arr[i]) {
+					clearInterval(timer);
+					var red = $('.red');
+					//当遍历完毕，没有匹配到时，弹出没找到
+					if (red.length <= 0) {
+						alert('Can not find the value');
+						return;
+					}
+					alert('匹配到' + red.length + '个要找的内容');
+					return;
+				}
+				//匹配到要找的内容，为其添加颜色类
+				if (arr[i].childNodes[0].nodeValue.trim() === value) {
+					arr[i].className = 'red';
+					//如果radio选择了只匹配第一个值，终止搜索
+					if (searchType[0].checked === true) {
+						clearInterval(timer);
+						alert('匹配到要找的内容');
+						return;
+					}
+					//如果radion选择了匹配所有，则继续往后找
+					i = i + 1;
+					return;
+				}
+				//当前项不是要找的内容，为当前项添加背景色cyan
+				arr[i].className = 'cyan';
+				i = i + 1;
+			}
+			timer = setInterval(changeColor,500);
+		}
+
+		var binaryTree = $('#binaryTree');
+		var binaryTreeWrap = $('#binaryTree-wrap');
+		var div = $('div');
+		var buttons = $('#buttons');
+		var button = $('button');
+		var addText = $('#addText');
+		var add = $('#add');
+		var delNode = $('#delNode');
+		var searchType = document.getElementsByName('search-type');
+
+		//给button绑定事件
+		buttons.addEventListener('click',function(event) {
+			//去除button的cyan类，给按下的button添加cyan背景颜色
+			if (event.target.nodeName === 'BUTTON') {
+				[].forEach.call(this.children, function(key) {
+					key.className = '';
+				});
+				var div = $('div');
+				[].forEach.call(div, function(key) {
+					key.className = '';
+				});
+				event.target.className = 'wine';
+				traverseTree(binaryTree, div, event.target.id);
+			}
+		});
+
+		//给binaryTree绑定点击事件
+		binaryTreeWrap.addEventListener('click',function(event) {
+			//去除button的cyan类，给按下的button添加cyan背景颜色
+			if (event.target.nodeName === 'DIV') {
+				if (timer !== null) {
+					clearInterval(timer);
+				}
+				var div = $('div');
+				[].forEach.call(div, function(key) {
+					key.className = '';
+				});
+				[].forEach.call(button, function(key) {
+					key.className = '';
+				});
+				event.target.className = 'select';
+			}
+		});
+
+		var treeMaxLevel = function(el) {
+			var nodeLevel = 1;
+			var node = function(elem) {
+				if (elem.parentNode.id !== 'binaryTree-wrap') {
+					nodeLevel++;
+						node(elem.parentNode);
+				}
+				return nodeLevel;
+			}
+			return node(el);
+		}
+		//删除节点
+		delNode.onclick = function() {
+			var select = $('.select')[0];
+			if (!select) {
+				alert('请选择要删除的节点');
+				return;
+			}
+			if (select.id === 'binaryTree') {
+				alert('不能删除整颗二叉树');
+				return;
+			}
+			select.parentNode.removeChild(select);
+			if (binaryTree.children.length > 0) {
+				var width = 0;
+				for (var i = 0; i < binaryTree.children.length; i++) {
+					width = width + binaryTree.children[i].offsetWidth;
+				}
+				binaryTree.style.width = width + 200 + 'px';
+			} else{
+				binaryTree.style.width = 200 + 'px';
+			}
+		}
+
+		//增加节点
+		add.onclick = function() {
+			var addValue = addText.value.trim();
+			var select = $('.select')[0];
+			if (!addValue) {
+				alert('请输入要添加的节点的文本内容');
+				return;
+			}
+			if (!select) {
+				alert('请点击选择要插入内容的位置');
+				return;
+			}
+			var nodeLevel = treeMaxLevel(select);
+			if (nodeLevel >= 8) {
+				alert('节点层数最多为8!')
+				return;
+			}
+
+			binaryTree.style.width = binaryTree.offsetWidth + addValue.length * 16 + 'px';
+
+			var div = document.createElement('div');
+			div.innerHTML = addValue;
+			select.appendChild(div);
+			// addText.value = '';
+		}
+
+
+	</script>
+</body>
+</html>
