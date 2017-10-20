@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task25</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		div{
+			margin-left: 40px;
+			font-size: 0;
+			margin-top: 10px;
+		}
+
+		#binaryTree{
+			padding: 0;
+			display: block;
+		}
+
+		span{
+			display: inline-block;
+			cursor: pointer;
+			margin-left: 4px;
+			vertical-align: middle;
+		}
+		/*文字内容*/
+		.text-down,
+		.text{
+			margin-left: 5px;
+			font-size: 18px;
+		}
+		.text-down:hover,
+		.text:hover{
+			color: red;
+		}
+
+		/*箭头的三种状态切换*/
+		.arrow{
+			width: 15px;
+			height: 15px;
+			background: url(icons/triangle.png) no-repeat;
+		}
+
+		.arrow-down{
+			width: 15px;
+			height: 15px;
+			background: url(icons/triangle_d.png) no-repeat left 4px;
+		}
+
+		.arrow-hide{
+			width: 15px;
+			height: 15px;
+			background: transparent;
+		}
+		/*添加删除按钮的样式*/
+		.add-node{
+			width: 15px;
+			height: 15px;
+			background: url(icons/add-node.png);
+			display: none;
+		}
+
+		.del-node{
+			width: 15px;
+			height: 15px;
+			background: url(icons/del-node.png);
+			display: none;
+		}
+
+		.hidden{
+			display: none;
+		}
+
+
+	</style>
+</head>
+<body>
+	<input type="text" name="" id="search">
+	<button id="search-btn">搜索</button>
+	<button id="clean-btn">清除</button>
+
+	<div id="binary-tree">
+		<div class="node-head">
+			<span class="arrow"></span>
+			<span class="text">Root</span>
+			<span class="add-node"></span>
+		</div>
+		<div class="node-body">
+			<div class="node-head">
+				<span class="arrow"></span>
+				<span class="text">fruits</span>
+				<span class="add-node"></span>
+				<span class="del-node"></span>
+			</div>
+			<div class="node-body">
+				<div class="node-head">
+					<span class="arrow"></span>
+					<span class="text">apple</span>
+					<span class="add-node"></span>
+					<span class="del-node"></span>
+				</div>
+				<div class="node-head">
+					<span class="arrow"></span>
+					<span class="text">pear</span>
+					<span class="add-node"></span>
+					<span class="del-node"></span>
+				</div>
+			</div>
+			<div class="node-head">
+				<span class="arrow"></span>
+				<span class="text">fruits</span>
+				<span class="add-node"></span>
+				<span class="del-node"></span>
+			</div>
+			<div class="node-body">
+				<div class="node-head">
+					<span class="arrow"></span>
+					<span class="text">apple</span>
+					<span class="add-node"></span>
+					<span class="del-node"></span>
+				</div>
+				<div class="node-head">
+					<span class="arrow"></span>
+					<span class="text">pear</span>
+					<span class="add-node"></span>
+					<span class="del-node"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<script type="text/javascript">
+		var $ = function(el) {
+			if (el.slice(0,1) === '#' && el.search(/\s/) === -1) {
+				return document.querySelector(el);
+			} else {
+				return document.querySelectorAll(el);
+			}
+		}
+
+		var binaryTree = $('#binary-tree');
+		var allBodyDiv = $('.node-body');
+		var allHeadDiv = $('.node-head');
+		var search = $('#search');
+		var searchBtn = $('#search-btn');
+		var cleanBtn = $('#clean-btn');
+
+
+
+		[].forEach.call(allBodyDiv,function(v) {
+			v.style.display = 'none';
+		});
+
+		//后面没有紧跟node-body的node-head，中的箭头删除
+		var nodeHead = $('.node-head');
+		[].forEach.call(nodeHead, function(v) {
+			if (!(v.nextElementSibling && v.nextElementSibling.classList.contains('node-body'))) {
+				v.children[0].className = 'arrow-hide';
+			}
+		});
+
+		//鼠标在对应的nodehead上方时，显示添加和删除项目按钮
+		binaryTree.addEventListener('mouseover',function(event) {
+			if (event.target.classList.contains('node-head')) {
+				children = event.target.children;
+			} else if (event.target.parentNode.classList.contains('node-head')) {
+				children = event.target.parentNode.children;
+			} else {
+				return;
+			}
+			[].forEach.call(children, function(v) {
+				if (v.classList.contains('add-node') || v.classList.contains('del-node')) {
+					v.style.display = 'inline-block';
+				}
+			});
+		});
+
+		binaryTree.addEventListener('mouseout',function(event) {
+			if (event.target.classList.contains('node-head')) {
+				var children = event.target.children;
+			} else if (event.target.parentNode.classList.contains('node-head')) {
+				var children = event.target.parentNode.children;
+			} else {
+				return;
+			}
+			[].forEach.call(children, function(v) {
+				if (v.classList.contains('add-node') || v.classList.contains('del-node')) {
+					v.style.display = 'none';
+				}
+			});
+		});
+
+		//点击文字或箭头时，对列表进行展开和收起
+		binaryTree.addEventListener('click',function(event) {
+			var parentEle = event.target.parentNode;
+			var parentNextEle = event.target.parentNode.nextElementSibling;
+			if (parentNextEle && parentNextEle.classList.contains('node-body')){
+				if (event.target.className === 'arrow' || event.target.className === 'text') {
+					parentEle.children[0].className = 'arrow-down';
+					parentEle.children[1].className = 'text-down';
+					parentNextEle.style.display = 'block';
+				} else if (event.target.className === 'arrow-down' || event.target.className === 'text-down') {
+					parentEle.children[0].className = 'arrow';
+					parentEle.children[1].className = 'text';
+					parentNextEle.style.display = 'none';
+				}
+			}
+		});
+
+		//添加，删除按钮事件
+		binaryTree.addEventListener('click',function(event) {
+			if (event.target.className === 'add-node') {
+				var inputText = prompt('请输入你要插入的节点');
+				if (inputText === null) {
+					return;
+				} else if (inputText === '') {
+					alert('节点内容不能为空')
+					return;
+				} else {
+					var grandpaEle = event.target.parentNode.parentNode;
+					var parentNextEle = event.target.parentNode.nextElementSibling;
+					var newNode = document.createElement('div');
+					newNode.className = 'node-head';
+					newNode.innerHTML = '<span class="arrow-hide"></span><span class="text">' + inputText + '</span><span class="add-node"></span><span class="del-node"></span>';
+					//添加按钮所在元素没有兄弟元素时
+					if (!parentNextEle) {
+						var newBody = document.createElement('div');
+						newBody.className = 'node-body';
+						newBody.appendChild(newNode);
+						grandpaEle.appendChild(newBody);
+					//添加按钮所在元素有兄弟元素，但紧接着的兄弟元素不是body时
+					} else if (!parentNextEle.classList.contains('node-body')) {
+						var newBody = document.createElement('div');
+						newBody.className = 'node-body';
+						newBody.appendChild(newNode);
+						grandpaEle.insertBefore(newBody, parentNextEle);
+						parentNextEle.style.display = 'block';
+					//添加按钮所在元素，紧接body时
+					} else {
+						event.target.parentNode.nextElementSibling.appendChild(newNode);
+						parentNextEle.style.display = 'block';
+					}
+				};
+				//判断添加节点后，是否需要在其父元素添加箭头，或调节箭头方向
+				var arrowDown= event.target.parentNode.children[0].classList.contains('arrow-down');
+				if (!arrowDown) {
+					event.target.parentNode.children[0].className = 'arrow-down';
+					event.target.parentNode.children[1].className = 'text-down';
+				}
+			}
+			if (event.target.className === 'del-node') {
+				var grandpaEle = event.target.parentNode.parentNode;
+				var grandpaPrevEle = event.target.parentNode.parentNode.previousElementSibling;
+				if (event.target.parentNode.nextElementSibling) {
+					var hasBody = event.target.parentNode.nextElementSibling.classList.contains('node-body');
+				}
+				//要删除的节点的父元素只有它一个子元素时，删除父元素body对应的head箭头，再删除父元素节点
+				//要删除的节点紧接body，且它的父元素只有它们两个子元素时，删除它们的父元素，再删除父元素body对应head的箭头
+				if (grandpaEle.children.length === 1 || (grandpaEle.children.length === 2 && hasBody)) {
+					grandpaPrevEle.children[0].className = 'arrow-hide';
+					grandpaPrevEle.children[1].className = 'text';
+					grandpaEle.parentNode.removeChild(grandpaEle);
+				//要删除的节点紧接body，且它的父元素超过两个子元素时，删除节点对应的body，再删除此head节点
+				} else if (grandpaEle.children.length > 2 && hasBody) {
+					event.target.parentNode.parentNode.removeChild(event.target.parentNode.nextElementSibling);
+					event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+				} else {
+				//要删除的节点不紧接body，且它的父元素超过一个子元素时，直接此节点head
+					event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+				}
+			}
+		});
+
+		//搜索事件
+		function searchSomeText() {
+			var searchText = search.value.trim();
+			var allDiv = $('div');
+			[].forEach.call(allDiv,function(v) {
+				v.style.display = 'block';
+				if (v.className === 'node-head') {
+					if (v.children[1].innerHTML === searchText) {
+						v.children[1].style.color = 'green';
+					} else if (v.nextElementSibling && v.nextElementSibling.className === 'node-body') {
+						v.children[0].className = 'arrow-down';
+						v.children[1].className = 'text-down';
+					}
+				}
+			});
+		};
+		//同时把搜索事件绑定到搜索按钮，以及键盘enter
+		searchBtn.onclick = searchSomeText;
+		search.onkeydown = function(event) {
+			if (event.keyCode === 13) {
+				searchSomeText();
+			}
+		}
+		//清除按钮事件
+		cleanBtn.onclick = function() {
+			var allHeadDiv = $('.node-head');
+			search.value = '';
+			[].forEach.call(allHeadDiv,function(v) {
+				v.children[1].style.color = '';
+			});
+		}
+
+	</script>
+</body>
+</html>
