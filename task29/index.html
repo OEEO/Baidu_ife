@@ -38,7 +38,7 @@
 	</div>
 	<script type="text/javascript">
 		function $( el ) {
-			if ( el.substr( 0,1 ) === '#' && el.search(/\n/) === -1) {
+			if ( el.substr( 0,1 ) === '#' && el.search(/\s/) === -1) {
 				return document.querySelector( el );
 			} else {
 				return document.querySelectorAll( el );

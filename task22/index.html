@@ -130,7 +130,7 @@
 </section>
 	<script type="text/javascript">
 		$ = function(el) {
-			if (el.slice(0,1) === '#' && el.match(/\s/) === null) {
+			if (el.slice(0,1) === '#' && el.search(/\s/) === -1) {
 				return document.querySelector(el);
 			} else {
 				return document.querySelectorAll(el);
