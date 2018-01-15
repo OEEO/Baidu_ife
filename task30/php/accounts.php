@@ -3,7 +3,7 @@
     // header("Content-Type: text/plain;charset=utf-8");
     header("Content-Type: application/json;charset=utf-8");
     header("Access-Control-Allow-Origin:*");
-    header("Access-Control-Allow-Methods:POST,GET");
+    header("Access-Control-Allow-Methods:GET,GET");
     //header("Content-Type: text/xml;charset=utf-8");
     //header("Content-Type: text/html;charset=utf-8");
     //header("Content-Type: application/javascript;charset=utf-8");
@@ -13,18 +13,18 @@
         '814731008@qq.com' => '12456'
     );
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         search();
     }
 
     function search(){
-        if (!isset($_POST['username']) || empty($_POST['username'])) {
+        if (!isset($_GET['username']) || empty($_GET['username'])) {
             echo '{"success":false,"msg":"请填写用户名"}';
             return;
         }
 
         global $accounts;
-        $username = $_POST['username'];
+        $username = $_GET['username'];
         $result = '{"success":false,"msg":"帐号不存在"}';
         foreach ($accounts as $key => $value) {
             if ($key == $username) {
