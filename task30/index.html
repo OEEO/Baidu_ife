@@ -71,10 +71,11 @@
         $('#username').bind('change', function() {
             $.ajax({
                 type:'GET',
-                url: './php/accounts.php?username=' + $('#username').val().trim(),
+                url: 'accounts.json',
                 dataType:'json',
                 success:function(data) {
                     console.log(data);
+                    var jsonObj = JSON.parse(data);
                     if (data.success) {
                         $('#result').html(data.msg);
                     } else {
