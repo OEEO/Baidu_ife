@@ -71,7 +71,7 @@
         $('#username').bind('change', function() {
             $.ajax({
                 type:'GET',
-                url: 'php/accounts.php?username=' + $('#username').val().trim(),
+                url: './php/accounts.php?username=' + $('#username').val().trim(),
                 dataType:'json',
                 success:function(data) {
                     console.log(data);
