@@ -75,13 +75,14 @@
                 url: 'accounts.json',
                 dataType:'json',
                 success:function(data) {
-                    data.forEach(function(val,i) {
+                    var result = '帐号不存在';
+                    data.some(function(val,i) {
                         if (val.username && val.username === username) {
-                            $('#result').html('帐号填写正确');
-                            return;
+                           result = '帐号填写正确';
+                           return true;
                         }
                     });
-                    $('#result').html('帐号不存在');
+                    $('#result').html(result);
                 },
                 error:function(jqXHR) {
                     console.log(jqXHR);
